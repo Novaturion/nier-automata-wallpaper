@@ -1,0 +1,227 @@
+{
+	"file" : "scene.json",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"_24hrformat" : 
+			{
+				"condition" : "clock.value == true && time.value == true",
+				"index" : 9,
+				"order" : 109,
+				"text" : "24hr format",
+				"type" : "bool",
+				"value" : false
+			},
+			"art" : 
+			{
+				"index" : 13,
+				"order" : 113,
+				"text" : "Art",
+				"type" : "bool",
+				"value" : true
+			},
+			"audiovisualizer" : 
+			{
+				"index" : 16,
+				"order" : 116,
+				"text" : "Audio Visualizer",
+				"type" : "bool",
+				"value" : true
+			},
+			"background" : 
+			{
+				"index" : 22,
+				"order" : 122,
+				"text" : "Background",
+				"type" : "scenetexture",
+				"value" : ""
+			},
+			"chromaticabberation" : 
+			{
+				"index" : 20,
+				"order" : 120,
+				"text" : "Chromatic Abberation",
+				"type" : "bool",
+				"value" : true
+			},
+			"clock" : 
+			{
+				"index" : 3,
+				"order" : 103,
+				"text" : "Clock",
+				"type" : "bool",
+				"value" : true
+			},
+			"date" : 
+			{
+				"condition" : "clock.value == true",
+				"index" : 10,
+				"order" : 110,
+				"text" : "Date",
+				"type" : "bool",
+				"value" : true
+			},
+			"datebar" : 
+			{
+				"condition" : "clock.value == true",
+				"index" : 11,
+				"order" : 111,
+				"text" : "Date Bar",
+				"type" : "bool",
+				"value" : true
+			},
+			"lefttoplines" : 
+			{
+				"index" : 14,
+				"order" : 114,
+				"text" : "Left Top Lines",
+				"type" : "bool",
+				"value" : true
+			},
+			"medianame" : 
+			{
+				"condition" : "",
+				"index" : 17,
+				"order" : 117,
+				"text" : "Media Name",
+				"type" : "bool",
+				"value" : true
+			},
+			"medianameshadow" : 
+			{
+				"condition" : "medianame.value == true",
+				"index" : 18,
+				"order" : 118,
+				"text" : "Media Name Shadow",
+				"type" : "bool",
+				"value" : true
+			},
+			"musicvolume" : 
+			{
+				"fraction" : true,
+				"index" : 21,
+				"max" : 1,
+				"min" : 0,
+				"order" : 121,
+				"precision" : 2,
+				"step" : 0.1,
+				"text" : "Music Volume",
+				"type" : "slider",
+				"value" : 0.5
+			},
+			"particles" : 
+			{
+				"index" : 19,
+				"order" : 119,
+				"text" : "Particles",
+				"type" : "bool",
+				"value" : true
+			},
+			"pointer" : 
+			{
+				"condition" : "clock.value == true",
+				"index" : 4,
+				"order" : 104,
+				"text" : "Pointer",
+				"type" : "bool",
+				"value" : true
+			},
+			"rightbottomlines" : 
+			{
+				"index" : 15,
+				"order" : 115,
+				"text" : "Right Bottom Lines",
+				"type" : "bool",
+				"value" : true
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0.6745098039215687 0.6509803921568628 0.5764705882352941"
+			},
+			"seconds" : 
+			{
+				"condition" : "clock.value == true && time.value == true",
+				"index" : 8,
+				"order" : 108,
+				"text" : "Seconds",
+				"type" : "bool",
+				"value" : true
+			},
+			"showday" : 
+			{
+				"condition" : "clock.value == true && date.value == true",
+				"index" : 12,
+				"order" : 112,
+				"text" : "Show Day",
+				"type" : "bool",
+				"value" : true
+			},
+			"text" : 
+			{
+				"index" : 0,
+				"order" : 100,
+				"text" : "Text",
+				"type" : "bool",
+				"value" : true
+			},
+			"textshadow" : 
+			{
+				"condition" : "text.value == true",
+				"index" : 1,
+				"order" : 101,
+				"text" : "Text Shadow",
+				"type" : "bool",
+				"value" : true
+			},
+			"textvalue" : 
+			{
+				"condition" : "text.value == true",
+				"index" : 2,
+				"order" : 102,
+				"text" : "Text Value",
+				"type" : "textinput",
+				"value" : "Checking System..."
+			},
+			"time" : 
+			{
+				"condition" : "clock.value == true",
+				"index" : 5,
+				"order" : 105,
+				"text" : "Time",
+				"type" : "bool",
+				"value" : true
+			},
+			"timebar" : 
+			{
+				"condition" : "clock.value == true",
+				"index" : 6,
+				"order" : 106,
+				"text" : "Time Bar",
+				"type" : "bool",
+				"value" : true
+			},
+			"timebarlines" : 
+			{
+				"condition" : "clock.value == true",
+				"index" : 7,
+				"order" : 107,
+				"text" : "Time Bar Lines",
+				"type" : "bool",
+				"value" : true
+			}
+		},
+		"supportsaudioprocessing" : true,
+		"supportsvideo" : true,
+		"supportsvideoflags" : 2
+	},
+	"preview" : "preview.jpg",
+	"snapshotformat" : -1,
+	"snapshotoverlay" : "",
+	"title" : "NieR: Automata",
+	"type" : "scene",
+	"version" : 0
+}
