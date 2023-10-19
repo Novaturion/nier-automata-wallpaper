@@ -317,14 +317,6 @@
 				"text" : "Time Bar Lines",
 				"type" : "bool",
 				"value" : true
-			},
-			"vhs" : 
-			{
-				"index" : 29,
-				"order" : 129,
-				"text" : "VHS",
-				"type" : "bool",
-				"value" : true
 			}
 		},
 		"supportsaudioprocessing" : true
