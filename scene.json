@@ -345,6 +345,7 @@
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
 			"id" : 128,
+			"locktransforms" : true,
 			"name" : "system-text",
 			"origin" : 
 			{
@@ -594,7 +595,11 @@
 				"script" : "'use strict';\n// Please note: Do not remove this line or asset references may break.\nexport let __workshopId = '2626323187';\n\nexport var scriptProperties = createScriptProperties()\n\t.addCheckbox({\n\t\tname: 'showHours',\n\t\tlabel: 'Show hours',\n\t\tvalue: true\n\t})\n\t.addCheckbox({\n\t\tname: 'showMinutes',\n\t\tlabel: 'Show minutes',\n\t\tvalue: true\n\t})\n\t.addCheckbox({\n\t\tname: 'showSeconds',\n\t\tlabel: 'Show seconds',\n\t\tvalue: false\n\t})\n\t.addCheckbox({\n\t\tname: 'showMilliseconds',\n\t\tlabel: 'Show milliseconds',\n\t\tvalue: false\n\t})\n\t.addCheckbox({\n\t\tname: 'use24hFormat',\n\t\tlabel: 'ui_editor_properties_use_24h_format',\n\t\tvalue: true\n\t})\n\t.addCheckbox({\n\t\tname: 'ampm',\n\t\tlabel: 'Show AM/PM (in 12h format)',\n\t\tvalue: false\n\t})\n\t.addText({\n\t\tname: 'delimiter',\n\t\tlabel: 'Delimiter (anything between {})',\n\t\tvalue: '{:}'\n\t})\n\t.addText({\n\t\tname: 'whitespaces',\n\t\tlabel: 'Whitespaces (anything between {})',\n\t\tvalue: '{}'\n\t})\n\t.finish();\n\nlet delimiter, whitespaces;\nexport function update(value) {\n\n\tvalue = '';\n\n\tlet time = new Date();\n\tlet hours = time.getHours();\n\tlet minutes\n\tlet seconds;\n\tlet milliseconds;\n\tlet suffix = '';\n\n\t//Clock\n\tif (!scriptProperties.use24hFormat) {\n\t\tif (scriptProperties.ampm) suffix = hours >= 12 ? ' PM' : ' AM';\n\t\thours %= 12;\n\t\tif (hours == 0) {\n\t\t\thours = 12;\n\t\t}\n\t}\n\t\n\thours = (\"00\" + hours).slice(-2);\n\tminutes = (\"00\" + time.getMinutes()).slice(-2);\n\tseconds = (\"00\" + time.getSeconds()).slice(-2);\n\tmilliseconds = (\"00\" + time.getMilliseconds()).slice(-2);\n\n\tif (scriptProperties.showHours)\n\t{\n\t\tvalue = hours;\n\t}\n\tif (scriptProperties.showMinutes)\n\t{\n\t\tvalue += delimiter + minutes;\n\t}\n\tif (scriptProperties.showSeconds)\n\t{\n\t\tvalue += delimiter + seconds;\n\t}\n\tif (scriptProperties.showMilliseconds)\n\t{\n\t\tvalue += delimiter + milliseconds;\n\t}\n\n\tvalue += suffix;\n\n\tif (whitespaces != \"\")\n\t{\n\t\tlet temp = \"\";\n\t\tfor (let i = 0; i < value.length; i++)\n\t\t{\n\t\t\ttemp += value[i] + whitespaces;\n\t\t}\n\t\tvalue = temp;\n\t}\n\n\treturn value;\n}\n\nexport function init() {\n\tdelimiter = getDelimiter(scriptProperties.delimiter);\n\twhitespaces = getDelimiter(scriptProperties.whitespaces);\n}\n\nfunction getDelimiter(str)\n{\n\tlet delim;\n\tif (str != undefined && str.length >= 2)\n\t{\n\t\tdelim = str.substring(\n\t\tstr.indexOf(\"{\") + 1, \n\t\tstr.lastIndexOf(\"}\")\n\t\t);\n\t}\n\telse delim = \"\";\n\treturn delim;\n}\n",
 				"scriptproperties" : 
 				{
-					"ampm" : true,
+					"ampm" : 
+					{
+						"user" : "ampm",
+						"value" : true
+					},
 					"delimiter" : "{:}",
 					"showHours" : true,
 					"showMilliseconds" : false,
