@@ -7,48 +7,125 @@
 			"_24hrformat" : 
 			{
 				"condition" : "clock.value == true && time.value == true",
-				"index" : 9,
-				"order" : 109,
+				"index" : 10,
+				"order" : 110,
 				"text" : "24hr format",
 				"type" : "bool",
 				"value" : false
 			},
 			"art" : 
 			{
-				"index" : 13,
-				"order" : 113,
+				"index" : 14,
+				"order" : 114,
 				"text" : "Art",
 				"type" : "bool",
 				"value" : true
 			},
+			"aspectratio" : 
+			{
+				"index" : 0,
+				"options" : 
+				[
+					{
+						"label" : "Screen",
+						"value" : "0"
+					},
+					{
+						"label" : "4:3",
+						"value" : "1.333333"
+					},
+					{
+						"label" : "16:9",
+						"value" : "1.777777"
+					},
+					{
+						"label" : "16:10",
+						"value" : "1.6"
+					},
+					{
+						"label" : "21:9",
+						"value" : "2.333333"
+					},
+					{
+						"label" : "32:9",
+						"value" : "3.555555"
+					}
+				],
+				"order" : 100,
+				"text" : "Aspect Ratio",
+				"type" : "combo",
+				"value" : "0"
+			},
 			"audiovisualizer" : 
 			{
-				"index" : 16,
-				"order" : 116,
+				"index" : 17,
+				"order" : 117,
 				"text" : "Audio Visualizer",
 				"type" : "bool",
 				"value" : true
 			},
+			"audiovisualizerbars" : 
+			{
+				"condition" : "audiovisualizer.value == true",
+				"fraction" : false,
+				"index" : 31,
+				"max" : 200,
+				"min" : 1,
+				"order" : 131,
+				"text" : "Audio Visualizer Bars",
+				"type" : "slider",
+				"value" : 28
+			},
 			"background" : 
 			{
-				"index" : 22,
-				"order" : 122,
+				"index" : 28,
+				"order" : 128,
 				"text" : "Background",
 				"type" : "scenetexture",
 				"value" : ""
 			},
+			"backgroundheight" : 
+			{
+				"index" : 30,
+				"order" : 130,
+				"text" : "Background Height",
+				"type" : "textinput",
+				"value" : "1440"
+			},
+			"backgroundwidth" : 
+			{
+				"index" : 29,
+				"order" : 129,
+				"text" : "Background Width",
+				"type" : "textinput",
+				"value" : "2560"
+			},
 			"chromaticabberation" : 
 			{
-				"index" : 20,
-				"order" : 120,
+				"index" : 25,
+				"order" : 125,
 				"text" : "Chromatic Abberation",
 				"type" : "bool",
 				"value" : true
 			},
+			"chromaticabberationstrength" : 
+			{
+				"condition" : "chromaticabberation.value == true",
+				"fraction" : true,
+				"index" : 26,
+				"max" : 2,
+				"min" : 0,
+				"order" : 126,
+				"precision" : 3,
+				"step" : 0.01,
+				"text" : "Chromatic Abberation Strength",
+				"type" : "slider",
+				"value" : 0.15
+			},
 			"clock" : 
 			{
-				"index" : 3,
-				"order" : 103,
+				"index" : 4,
+				"order" : 104,
 				"text" : "Clock",
 				"type" : "bool",
 				"value" : true
@@ -56,8 +133,8 @@
 			"date" : 
 			{
 				"condition" : "clock.value == true",
-				"index" : 10,
-				"order" : 110,
+				"index" : 11,
+				"order" : 111,
 				"text" : "Date",
 				"type" : "bool",
 				"value" : true
@@ -65,16 +142,16 @@
 			"datebar" : 
 			{
 				"condition" : "clock.value == true",
-				"index" : 11,
-				"order" : 111,
+				"index" : 12,
+				"order" : 112,
 				"text" : "Date Bar",
 				"type" : "bool",
 				"value" : true
 			},
 			"lefttoplines" : 
 			{
-				"index" : 14,
-				"order" : 114,
+				"index" : 15,
+				"order" : 115,
 				"text" : "Left Top Lines",
 				"type" : "bool",
 				"value" : true
@@ -82,55 +159,98 @@
 			"medianame" : 
 			{
 				"condition" : "",
-				"index" : 17,
-				"order" : 117,
+				"index" : 18,
+				"order" : 118,
 				"text" : "Media Name",
 				"type" : "bool",
 				"value" : true
 			},
 			"medianameshadow" : 
 			{
-				"condition" : "medianame.value == true",
-				"index" : 18,
-				"order" : 118,
+				"condition" : "",
+				"index" : 19,
+				"order" : 119,
 				"text" : "Media Name Shadow",
 				"type" : "bool",
 				"value" : true
 			},
-			"musicvolume" : 
-			{
-				"fraction" : true,
-				"index" : 21,
-				"max" : 1,
-				"min" : 0,
-				"order" : 121,
-				"precision" : 2,
-				"step" : 0.1,
-				"text" : "Music Volume",
-				"type" : "slider",
-				"value" : 0.5
-			},
 			"particles" : 
 			{
-				"index" : 19,
-				"order" : 119,
+				"index" : 20,
+				"order" : 120,
 				"text" : "Particles",
 				"type" : "bool",
 				"value" : true
 			},
+			"particlescount" : 
+			{
+				"condition" : "particles.value == true",
+				"fraction" : true,
+				"index" : 23,
+				"max" : 2,
+				"min" : 0.01,
+				"order" : 123,
+				"precision" : 3,
+				"step" : 0.01,
+				"text" : "Particles Count",
+				"type" : "slider",
+				"value" : 1
+			},
+			"particleslifetime" : 
+			{
+				"condition" : "particles.value == true",
+				"fraction" : true,
+				"index" : 24,
+				"max" : 2,
+				"min" : 0.01,
+				"order" : 124,
+				"precision" : 3,
+				"step" : 0.01,
+				"text" : "Particles Lifetime",
+				"type" : "slider",
+				"value" : 1
+			},
+			"particlessize" : 
+			{
+				"condition" : "particles.value == true",
+				"fraction" : true,
+				"index" : 22,
+				"max" : 2,
+				"min" : 0.01,
+				"order" : 122,
+				"precision" : 3,
+				"step" : 0.01,
+				"text" : "Particles Size",
+				"type" : "slider",
+				"value" : 1
+			},
+			"particlesspeed" : 
+			{
+				"condition" : "particles.value == true",
+				"fraction" : true,
+				"index" : 21,
+				"max" : 2,
+				"min" : 0.01,
+				"order" : 121,
+				"precision" : 3,
+				"step" : 0.01,
+				"text" : "Particles Speed",
+				"type" : "slider",
+				"value" : 1
+			},
 			"pointer" : 
 			{
 				"condition" : "clock.value == true",
-				"index" : 4,
-				"order" : 104,
+				"index" : 5,
+				"order" : 105,
 				"text" : "Pointer",
 				"type" : "bool",
 				"value" : true
 			},
 			"rightbottomlines" : 
 			{
-				"index" : 15,
-				"order" : 115,
+				"index" : 16,
+				"order" : 116,
 				"text" : "Right Bottom Lines",
 				"type" : "bool",
 				"value" : true
@@ -145,8 +265,8 @@
 			"seconds" : 
 			{
 				"condition" : "clock.value == true && time.value == true",
-				"index" : 8,
-				"order" : 108,
+				"index" : 9,
+				"order" : 109,
 				"text" : "Seconds",
 				"type" : "bool",
 				"value" : true
@@ -154,25 +274,25 @@
 			"showday" : 
 			{
 				"condition" : "clock.value == true && date.value == true",
-				"index" : 12,
-				"order" : 112,
+				"index" : 13,
+				"order" : 113,
 				"text" : "Show Day",
 				"type" : "bool",
 				"value" : true
 			},
 			"text" : 
 			{
-				"index" : 0,
-				"order" : 100,
+				"index" : 1,
+				"order" : 101,
 				"text" : "Text",
 				"type" : "bool",
 				"value" : true
 			},
 			"textshadow" : 
 			{
-				"condition" : "text.value == true",
-				"index" : 1,
-				"order" : 101,
+				"condition" : "",
+				"index" : 2,
+				"order" : 102,
 				"text" : "Text Shadow",
 				"type" : "bool",
 				"value" : true
@@ -180,8 +300,8 @@
 			"textvalue" : 
 			{
 				"condition" : "text.value == true",
-				"index" : 2,
-				"order" : 102,
+				"index" : 3,
+				"order" : 103,
 				"text" : "Text Value",
 				"type" : "textinput",
 				"value" : "Checking System..."
@@ -189,8 +309,8 @@
 			"time" : 
 			{
 				"condition" : "clock.value == true",
-				"index" : 5,
-				"order" : 105,
+				"index" : 6,
+				"order" : 106,
 				"text" : "Time",
 				"type" : "bool",
 				"value" : true
@@ -198,8 +318,8 @@
 			"timebar" : 
 			{
 				"condition" : "clock.value == true",
-				"index" : 6,
-				"order" : 106,
+				"index" : 7,
+				"order" : 107,
 				"text" : "Time Bar",
 				"type" : "bool",
 				"value" : true
@@ -207,9 +327,17 @@
 			"timebarlines" : 
 			{
 				"condition" : "clock.value == true",
-				"index" : 7,
-				"order" : 107,
+				"index" : 8,
+				"order" : 108,
 				"text" : "Time Bar Lines",
+				"type" : "bool",
+				"value" : true
+			},
+			"vhs" : 
+			{
+				"index" : 27,
+				"order" : 127,
+				"text" : "VHS",
 				"type" : "bool",
 				"value" : true
 			}
@@ -218,7 +346,7 @@
 		"supportsvideo" : true,
 		"supportsvideoflags" : 2
 	},
-	"preview" : "preview.jpg",
+	"preview" : "preview.gif",
 	"snapshotformat" : -1,
 	"snapshotoverlay" : "",
 	"title" : "NieR: Automata",

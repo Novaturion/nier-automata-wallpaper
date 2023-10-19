@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "-162.19676 -5.61339 -1.00000",
-		"eye" : "-162.19676 -5.61339 0.00000",
+		"center" : "-362.03488 27.05339 -1.00000",
+		"eye" : "-362.03488 27.05339 0.00000",
 		"up" : "0.00000 1.00000 0.00000"
 	},
 	"general" : 
@@ -35,7 +35,7 @@
 		"orthogonalprojection" : 
 		{
 			"height" : 1440,
-			"width" : 3440
+			"width" : 2560
 		},
 		"skylightcolor" : "0.30000 0.30000 0.30000",
 		"zoom" : 1.0
@@ -43,8 +43,19 @@
 	"objects" : 
 	[
 		{
+			"id" : 131,
+			"locktransforms" : true,
+			"name" : "root",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nshared.IS_ASPECT_RATIO_LOCKED = false;\n\nshared.REFERENCE_RESOLUTION = new Vec2(2560, 1440);\nshared.REFERENCE_RESOLUTION_HALF = new Vec2(1280, 720);\n\nfunction updateResolutionData(resolution) {\n\tif (shared.IS_ASPECT_RATIO_LOCKED) {\n\t\tresolution.x = resolution.y * shared.ASPECT_RATIO;\n\t}\n\n\tshared.RESOLUTION = resolution;\n\tshared.RESOLUTION_HALF = new Vec2(resolution.x * 0.5, resolution.y * 0.5);\n\n\tshared.SCALE_FACTOR = new Vec2(\n\t\tshared.RESOLUTION.x / shared.REFERENCE_RESOLUTION.x,\n\t\tshared.RESOLUTION.y / shared.REFERENCE_RESOLUTION.y\n\t);\n}\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tshared.IS_ASPECT_RATIO_LOCKED = properties.aspectratio != 0;\n\t\tshared.ASPECT_RATIO = properties.aspectratio;\n\n\t\tupdateResolutionData(engine.screenResolution);\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tupdateResolutionData(value);\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tupdateResolutionData(engine.screenResolution);\n}\n\nshared.clamp = (num, min, max) => {\n\treturn Math.min(Math.max(num, min), max);\n};\n\nshared.reposition = (origin) => {\n\treturn new Vec2(\n\t\torigin.x * shared.SCALE_FACTOR.x,\n\t\torigin.y * shared.SCALE_FACTOR.y\n\t);\n}\n\nshared.repositionTopLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionCenterLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\t0\n\t);\n}\n\nshared.repositionBottomLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionTopCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\t0\n\t);\n}\n\nshared.repositionBottomCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionTopRight = () => {\n\treturn new Vec2(\n\t\tshared.RESOLUTION_HALF.x,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionCenterRight = () => {\n\treturn new Vec2(\n\t\t0,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionBottomRight = () => {\n\treturn new Vec2(\n\t\tshared.RESOLUTION_HALF.x,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.rescaleX = (scale) => {\n\treturn scale.x * shared.SCALE_FACTOR.x;\n}\n\nshared.rescaleY = (scale) => {\n\treturn scale.y * shared.SCALE_FACTOR.y;\n}\n\nshared.rescaleMin = (scale) => {\n\tlet factor = Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y);\n\treturn new Vec2(\n\t\tscale.x * factor,\n\t\tscale.y * factor\n\t);\n}\n\nshared.rescaleMax = (scale) => {\n\tlet factor = Math.max(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y);\n\treturn new Vec2(\n\t\tscale.x * factor,\n\t\tscale.y * factor\n\t);\n}\n\nshared.rescaleBackground = (width, height) => {\n\tlet factor = Math.max(\n\t\tengine.screenResolution.x / width,\n\t\tengine.screenResolution.y / height\n\t);\n\treturn factor;\n}\n",
+				"value" : "1280.00000 720.00000 0.00000"
+			}
+		},
+		{
 			"alignment" : "center",
 			"alpha" : 1.0,
+			"angles" : "0.00000 -0.00000 0.00000",
 			"brightness" : 1.0,
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
@@ -53,22 +64,31 @@
 			"image" : "models/Background.json",
 			"locktransforms" : true,
 			"name" : "background",
-			"origin" : "1720.00000 720.00000 0.00000",
-			"size" : "3440.00000 1440.00000",
+			"parent" : 131,
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet width = 2560;\nlet height = 1440;\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('backgroundwidth')) {\n\t\tisResolutionChanged = true;\n\n\t\twidth = properties.backgroundwidth;\n\t}\n\n\tif (properties.hasOwnProperty('backgroundheight')) {\n\t\tisResolutionChanged = true;\n\n\t\theight = properties.backgroundheight;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.rescaleBackground(width, height);\n\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "1.00000 1.00000 1.00000"
+			},
+			"size" : "2560.00000 1440.00000",
 			"solid" : true
-		},
-		{
-			"id" : 131,
-			"name" : "root",
-			"origin" : "1720.00000 720.00000 0.00000"
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
 			"id" : 431,
 			"locktransforms" : true,
 			"name" : "left-lines",
-			"origin" : "-1720.00000 720.00000 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tvalue.x = -engine.screenResolution.x * 0.5;\n\t\tvalue.y = engine.screenResolution.y * 0.5;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "-1280.00000 720.00000 0.00000"
+			},
 			"parent" : 131,
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.rescaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "1.00000 1.00000 1.00000"
+			},
 			"visible" : 
 			{
 				"user" : "lefttoplines",
@@ -83,34 +103,15 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/shake/effect.json",
-					"id" : 387,
-					"name" : "",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"bounds" : "0 1",
-								"friction" : "1 1",
-								"speed" : 1,
-								"strength" : 0.1
-							},
-							"id" : 388,
-							"textures" : [ null, "masks/shake_mask_29d1aafb" ]
-						}
-					],
-					"visible" : true
-				}
-			],
 			"id" : 330,
 			"image" : "models/circle-1.json",
 			"locktransforms" : true,
 			"name" : "circle-1",
-			"origin" : "592.00000 -346.00000 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tinitialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 5;\n\tvalue.x = initialOrigin.x - delta;\n\tvalue.y = initialOrigin.y + delta;\n\n\treturn value;\n}\n",
+				"value" : "591.99994 -346.00000 0.00000"
+			},
 			"parent" : 431,
 			"scale" : "1.15500 1.15500 1.00000",
 			"size" : "1024.00000 602.00000",
@@ -124,34 +125,15 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/shake/effect.json",
-					"id" : 395,
-					"name" : "",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"bounds" : "0 1",
-								"friction" : "1 1",
-								"speed" : 1,
-								"strength" : 0.1
-							},
-							"id" : 396,
-							"textures" : [ null, "masks/shake_mask_aae3b3f2" ]
-						}
-					],
-					"visible" : true
-				}
-			],
 			"id" : 390,
 			"image" : "models/circle-1.json",
 			"locktransforms" : true,
 			"name" : "circle-1",
-			"origin" : "601.96472 -354.99890 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tinitialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 4 + 5;\n\tvalue.x = initialOrigin.x + delta;\n\tvalue.y = initialOrigin.y - delta;\n\n\treturn value;\n}\n",
+				"value" : "601.96454 -354.99902 0.00000"
+			},
 			"parent" : 431,
 			"scale" : "1.19000 1.19000 1.00000",
 			"size" : "1024.00000 602.00000",
@@ -171,8 +153,8 @@
 			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet initialValue;\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialValue.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialValue = value;\n\treturn value;\n}\n",
-				"value" : "913.63074 -586.52826 0.00000"
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
+				"value" : "660.00000 -623.00000 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.00000 1.40000 1.00000",
@@ -193,8 +175,8 @@
 			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet initialValue;\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialValue.x - (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialValue = value;\n\treturn value;\n}\n",
-				"value" : "1101.93213 -663.08087 0.00000"
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x - (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
+				"value" : "840.00000 -689.00000 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.00000 1.55000 1.00000",
@@ -215,8 +197,8 @@
 			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet initialValue;\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialValue.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialValue = value;\n\treturn value;\n}\n",
-				"value" : "1128.33411 -585.19458 0.00000"
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
+				"value" : "877.00000 -622.00000 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.00000 1.40000 1.00000",
@@ -225,12 +207,20 @@
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
-			"id" : 465,
+			"id" : 332,
 			"locktransforms" : true,
 			"name" : "right-lines",
-			"origin" : "1720.00000 -720.00000 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tvalue.x = engine.screenResolution.x * 0.5;\n\t\tvalue.y = -engine.screenResolution.y * 0.5;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "1280.00000 -720.00000 0.00000"
+			},
 			"parent" : 131,
-			"scale" : "-1.00000 -1.00000 1.00000",
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.rescaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "-1.00000 -1.00000 1.00000"
+			},
 			"visible" : 
 			{
 				"user" : "rightbottomlines",
@@ -245,35 +235,16 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/shake/effect.json",
-					"id" : 405,
-					"name" : "",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"bounds" : "0 1",
-								"friction" : "1 1",
-								"speed" : 1,
-								"strength" : 0.1
-							},
-							"id" : 406,
-							"textures" : [ null, "masks/shake_mask_29d1aafb" ]
-						}
-					],
-					"visible" : true
-				}
-			],
-			"id" : 402,
+			"id" : 327,
 			"image" : "models/circle-1.json",
 			"locktransforms" : true,
 			"name" : "circle-1",
-			"origin" : "592.00000 -346.00000 0.00000",
-			"parent" : 465,
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tinitialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 5;\n\tvalue.x = initialOrigin.x - delta;\n\tvalue.y = initialOrigin.y + delta;\n\n\treturn value;\n}\n",
+				"value" : "591.99994 -346.00000 0.00000"
+			},
+			"parent" : 332,
 			"scale" : "1.15500 1.15500 1.00000",
 			"size" : "1024.00000 602.00000",
 			"solid" : true
@@ -286,35 +257,16 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/shake/effect.json",
-					"id" : 409,
-					"name" : "",
-					"passes" : 
-					[
-						{
-							"constantshadervalues" : 
-							{
-								"bounds" : "0 1",
-								"friction" : "1 1",
-								"speed" : 1,
-								"strength" : 0.1
-							},
-							"id" : 410,
-							"textures" : [ null, "masks/shake_mask_aae3b3f2" ]
-						}
-					],
-					"visible" : true
-				}
-			],
-			"id" : 408,
+			"id" : 321,
 			"image" : "models/circle-1.json",
 			"locktransforms" : true,
 			"name" : "circle-1",
-			"origin" : "601.96484 -354.99890 0.00000",
-			"parent" : 465,
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tinitialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 4 + 5;\n\tvalue.x = initialOrigin.x + delta;\n\tvalue.y = initialOrigin.y - delta;\n\n\treturn value;\n}\n",
+				"value" : "601.96454 -354.99902 0.00000"
+			},
+			"parent" : 332,
 			"scale" : "1.19000 1.19000 1.00000",
 			"size" : "1024.00000 602.00000",
 			"solid" : true
@@ -327,16 +279,16 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 412,
+			"id" : 319,
 			"image" : "models/line-1.json",
 			"locktransforms" : true,
 			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet initialValue;\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialValue.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialValue = value;\n\treturn value;\n}\n",
-				"value" : "913.63086 -586.52826 0.00000"
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
+				"value" : "660.00000 -623.00000 0.00000"
 			},
-			"parent" : 465,
+			"parent" : 332,
 			"scale" : "1.00000 1.40000 1.00000",
 			"size" : "3.00000 1259.00000",
 			"solid" : true
@@ -349,16 +301,16 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 413,
+			"id" : 316,
 			"image" : "models/line-1.json",
 			"locktransforms" : true,
 			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet initialValue;\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialValue.x - (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialValue = value;\n\treturn value;\n}\n",
-				"value" : "1101.93213 -663.08087 0.00000"
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x - (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
+				"value" : "840.00000 -689.00000 0.00000"
 			},
-			"parent" : 465,
+			"parent" : 332,
 			"scale" : "1.00000 1.55000 1.00000",
 			"size" : "3.00000 1259.00000",
 			"solid" : true
@@ -371,16 +323,16 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 414,
+			"id" : 313,
 			"image" : "models/line-1.json",
 			"locktransforms" : true,
 			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet initialValue;\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialValue.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialValue = value;\n\treturn value;\n}\n",
-				"value" : "1128.33398 -585.19458 0.00000"
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
+				"value" : "877.00000 -622.00000 0.00000"
 			},
-			"parent" : 465,
+			"parent" : 332,
 			"scale" : "1.00000 1.40000 1.00000",
 			"size" : "3.00000 1259.00000",
 			"solid" : true
@@ -390,8 +342,17 @@
 			"id" : 128,
 			"locktransforms" : true,
 			"name" : "system-text",
-			"origin" : "-1194.00000 473.00000 0.00000",
-			"parent" : 131
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet position = shared.reposition(origin);\n\t\tvalue.x = position.x;\n\t\tvalue.y = position.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "-862.00000 450.00000 0.00000"
+			},
+			"parent" : 131,
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.rescaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "1.00000 1.00000 1.00000"
+			}
 		},
 		{
 			"alpha" : 0.25,
@@ -415,8 +376,8 @@
 			"maxwidth" : 500.0,
 			"name" : "text-shadow",
 			"opaquebackground" : false,
-			"origin" : "6.00000 -6.00000 0.00000",
-			"padding" : 32,
+			"origin" : "-275.00000 -6.00000 0.00000",
+			"padding" : 0,
 			"parent" : 128,
 			"pointsize" : 14.0,
 			"size" : "553.00000 117.00000",
@@ -448,7 +409,7 @@
 			[
 				{
 					"file" : "effects/vhs/effect.json",
-					"id" : 361,
+					"id" : 189,
 					"name" : "",
 					"passes" : 
 					[
@@ -456,17 +417,21 @@
 							"constantshadervalues" : 
 							{
 								"artifacts" : 1.6,
-								"chromatic" : 0.1,
+								"chromatic" : 0.15000001,
 								"distortionspeed" : 1.2,
-								"distortionstrength" : 1.0,
+								"distortionstrength" : 1,
 								"distortionwidth" : 1.3,
 								"scale" : 0.40000001,
-								"strength" : 1.0
+								"strength" : 1
 							},
-							"id" : 363
+							"id" : 190
 						}
 					],
-					"visible" : true
+					"visible" : 
+					{
+						"user" : "vhs",
+						"value" : true
+					}
 				}
 			],
 			"font" : "fonts/FOT-Rodin Pro DB.otf",
@@ -480,10 +445,11 @@
 			"maxwidth" : 500.0,
 			"name" : "text",
 			"opaquebackground" : false,
-			"padding" : 32,
+			"origin" : "-281.00000 0.00000 0.00000",
+			"padding" : 0,
 			"parent" : 128,
 			"pointsize" : 14.0,
-			"size" : "617.00000 181.00000",
+			"size" : "553.00000 117.00000",
 			"solid" : true,
 			"text" : 
 			{
@@ -502,8 +468,17 @@
 			"id" : 294,
 			"locktransforms" : true,
 			"name" : "clock",
-			"origin" : "-860.00000 0.00000 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.reposition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "-862.00000 0.00000 0.00000"
+			},
 			"parent" : 131,
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.rescaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "1.00000 1.00000 1.00000"
+			},
 			"visible" : 
 			{
 				"user" : "clock",
@@ -522,7 +497,7 @@
 			"image" : "models/pointer.json",
 			"locktransforms" : true,
 			"name" : "pointer",
-			"origin" : "-336.00000 0.00000 0.00000",
+			"origin" : "-334.00000 0.00000 0.00000",
 			"parent" : 294,
 			"size" : "61.00000 178.00000",
 			"solid" : true,
@@ -544,7 +519,7 @@
 			"image" : "models/clock-bar-lines.json",
 			"locktransforms" : true,
 			"name" : "time-bar-lines",
-			"origin" : "54.00000 47.00000 0.00000",
+			"origin" : "56.00000 47.00000 0.00000",
 			"parent" : 294,
 			"size" : "684.00000 100.00000",
 			"solid" : true,
@@ -556,51 +531,21 @@
 		},
 		{
 			"alignment" : "center",
-			"alpha" : 1.0,
+			"alpha" : 
+			{
+				"script" : "'use strict';\n\n/**\n * @param {Number} value - for property 'alpha'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime * 5.5) * 0.1;\n\n\treturn shared.clamp(1 + delta, 0, 1);\n}\n",
+				"value" : 1.0
+			},
 			"angles" : "0.00000 -0.00000 0.00000",
 			"brightness" : 1.0,
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"effects" : 
-			[
-				{
-					"file" : "effects/pulse/effect.json",
-					"id" : 281,
-					"name" : "",
-					"passes" : 
-					[
-						{
-							"combos" : 
-							{
-								"BLENDMODE" : 0,
-								"PULSEALPHA" : 1,
-								"PULSECOLOR" : 0
-							},
-							"constantshadervalues" : 
-							{
-								"amount" : 1,
-								"bounds" : "1 0",
-								"noiseamount" : 0,
-								"noisespeed" : 0.5,
-								"phase" : 0,
-								"power" : 0.31,
-								"speed" : 6,
-								"tinthigh" : "1 1 1",
-								"tintlow" : "1 1 1"
-							},
-							"id" : 282,
-							"textures" : [ null, null, "masks/pulse_mask_92efc536" ]
-						}
-					],
-					"visible" : true
-				}
-			],
 			"id" : 358,
 			"image" : "models/clock-bar.json",
 			"locktransforms" : true,
 			"name" : "time-bar",
-			"origin" : "54.00000 47.00000 0.00000",
+			"origin" : "56.00000 47.00000 0.00000",
 			"parent" : 294,
 			"size" : "687.00000 81.00000",
 			"solid" : true,
@@ -632,7 +577,7 @@
 			"maxwidth" : 476.75928,
 			"name" : "time",
 			"opaquebackground" : false,
-			"origin" : "-221.00000 50.00000 0.00000",
+			"origin" : "-219.00000 50.00000 0.00000",
 			"padding" : 32,
 			"parent" : 294,
 			"perspective" : true,
@@ -683,7 +628,7 @@
 			"image" : "models/date-bar.json",
 			"locktransforms" : true,
 			"name" : "date-bar",
-			"origin" : "54.00000 -56.00000 0.00000",
+			"origin" : "56.00000 -56.00000 0.00000",
 			"parent" : 294,
 			"size" : "672.00000 65.00000",
 			"solid" : true,
@@ -715,7 +660,7 @@
 			"maxwidth" : 476.77698,
 			"name" : "date",
 			"opaquebackground" : false,
-			"origin" : "-221.00000 -54.00000 0.00000",
+			"origin" : "-219.00000 -54.00000 0.00000",
 			"padding" : 69,
 			"parent" : 294,
 			"pointsize" : 7.0,
@@ -754,7 +699,7 @@
 			"brightness" : 1.0,
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
-			"copybackground" : true,
+			"copybackground" : false,
 			"effects" : 
 			[
 				{
@@ -771,7 +716,11 @@
 							"constantshadervalues" : 
 							{
 								"Bar Color" : "0.22745098039215686 0.22745098039215686 0.2",
-								"Bar Count" : 20,
+								"Bar Count" : 
+								{
+									"user" : "audiovisualizerbars",
+									"value" : 32
+								},
 								"Bar Spacing" : 0.2,
 								"Lower/Upper Bar Bounds" : "0 0.45",
 								"ui_editor_properties_opacity" : 0.89999998
@@ -784,10 +733,19 @@
 			],
 			"id" : 284,
 			"image" : "models/util/composelayer.json",
+			"locktransforms" : true,
 			"name" : "audio-visualizer",
-			"origin" : "849.00000 0.00000 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.reposition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "848.00000 0.00000 0.00000"
+			},
 			"parent" : 131,
-			"scale" : "0.35205 0.35205 0.35205",
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.rescaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "0.35000 0.35000 1.00000"
+			},
 			"size" : "1920.00000 1080.00000",
 			"solid" : true,
 			"visible" : 
@@ -801,8 +759,17 @@
 			"id" : 119,
 			"locktransforms" : true,
 			"name" : "media-text",
-			"origin" : "1187.00000 -510.00000 0.00000",
-			"parent" : 131
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.reposition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "862.00000 -400.00000 0.00000"
+			},
+			"parent" : 131,
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.rescaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "1.00000 1.00000 1.00000"
+			}
 		},
 		{
 			"alpha" : 0.25,
@@ -823,21 +790,21 @@
 			"limitwidth" : true,
 			"locktransforms" : true,
 			"maxrows" : 3,
-			"maxwidth" : 684.0,
+			"maxwidth" : 667.0,
 			"name" : "media-name-shadow",
 			"opaquebackground" : false,
-			"origin" : "6.00000 -6.00000 0.00000",
-			"padding" : 32,
+			"origin" : "324.00000 -6.00000 0.00000",
+			"padding" : 0,
 			"parent" : 119,
 			"pointsize" : 9.5,
-			"size" : "229.00000 79.00000",
+			"size" : "240.00000 79.00000",
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "// Please note: Do not remove this line or asset references may break.\nexport let __workshopId = '2948115830';\nvar mediaData = \"\";\nexport function update(value) {\n\treturn mediaData;\n}\nexport function mediaPropertiesChanged(event) {\n\tmediaData = event.title;\n}\n",
-				"value" : "SONG TEXT"
+				"script" : "// Please note: Do not remove this line or asset references may break.\nexport let __workshopId = '2948115830';\n\nlet title = '';\n\nexport function update(value) {\n\treturn title;\n}\n\nexport function mediaPropertiesChanged(event) {\n\ttitle = event.title;\n}\n",
+				"value" : "Media Name"
 			},
-			"verticalalign" : "bottom",
+			"verticalalign" : "center",
 			"visible" : 
 			{
 				"user" : "medianameshadow",
@@ -867,7 +834,7 @@
 							"constantshadervalues" : 
 							{
 								"artifacts" : 1.6,
-								"chromatic" : 0.1,
+								"chromatic" : 0.15000001,
 								"distortionspeed" : 1.2,
 								"distortionstrength" : 1,
 								"distortionwidth" : 1.3,
@@ -877,7 +844,11 @@
 							"id" : 423
 						}
 					],
-					"visible" : true
+					"visible" : 
+					{
+						"user" : "vhs",
+						"value" : true
+					}
 				}
 			],
 			"font" : "fonts/FOT-Rodin Pro DB.otf",
@@ -888,20 +859,21 @@
 			"limitwidth" : true,
 			"locktransforms" : true,
 			"maxrows" : 3,
-			"maxwidth" : 684.0,
+			"maxwidth" : 666.73499,
 			"name" : "media-name",
 			"opaquebackground" : false,
-			"padding" : 32,
+			"origin" : "318.00000 0.00000 0.00000",
+			"padding" : 0,
 			"parent" : 119,
 			"pointsize" : 9.5,
-			"size" : "293.00000 143.00000",
+			"size" : "240.00000 79.00000",
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "// Please note: Do not remove this line or asset references may break.\nexport let __workshopId = '2948115830';\nvar mediaData = \"\";\nexport function update(value) {\n\treturn mediaData;\n}\nexport function mediaPropertiesChanged(event) {\n\tmediaData = event.title;\n}\n",
-				"value" : "SONG TEXT"
+				"script" : "// Please note: Do not remove this line or asset references may break.\nexport let __workshopId = '2948115830';\n\nlet title = '';\n\nexport function update(value) {\n\treturn title;\n}\n\nexport function mediaPropertiesChanged(event) {\n\ttitle = event.title;\n}\n",
+				"value" : "Media Name"
 			},
-			"verticalalign" : "bottom",
+			"verticalalign" : "center",
 			"visible" : 
 			{
 				"user" : "medianame",
@@ -913,33 +885,22 @@
 			"id" : 493,
 			"locktransforms" : true,
 			"name" : "art",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.reposition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "0.00000 0.00000 0.00000"
+			},
 			"parent" : 131,
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.rescaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "1.00000 1.00000 1.00000"
+			},
 			"visible" : 
 			{
 				"user" : "art",
 				"value" : true
 			}
-		},
-		{
-			"alignment" : "center",
-			"alpha" : 1.0,
-			"angles" : "0.00000 -0.00000 0.00000",
-			"brightness" : 1.0,
-			"color" : "1.00000 1.00000 1.00000",
-			"colorBlendMode" : 0,
-			"copybackground" : true,
-			"id" : 374,
-			"image" : "models/pod-042.json",
-			"locktransforms" : true,
-			"name" : "pod-042",
-			"origin" : 
-			{
-				"script" : "'use strict';\n\nlet initialValue;\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = initialValue.y - (Math.sin(engine.runtime) * 2);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialValue = value;\n\treturn value;\n}\n",
-				"value" : "262.00000 183.00000 0.00000"
-			},
-			"parent" : 493,
-			"size" : "51.00000 58.00000",
-			"solid" : true
 		},
 		{
 			"alignment" : "center",
@@ -976,7 +937,11 @@
 			"image" : "models/art-center.json",
 			"locktransforms" : true,
 			"name" : "art-center",
-			"origin" : "-15.50000 -20.00000 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = initialOrigin.y - (Math.sin(engine.runtime * 0.8) * 2);\n\treturn value;\n}\n",
+				"value" : "-15.50000 -20.00000 0.00000"
+			},
 			"parent" : 493,
 			"size" : "701.00000 510.00000",
 			"solid" : true
@@ -1009,14 +974,18 @@
 							"textures" : [ null, "masks/shake_mask_6c721b80", "masks/shake_mask_77953837" ]
 						}
 					],
-					"visible" : true
+					"visible" : false
 				}
 			],
 			"id" : 326,
 			"image" : "models/art-top.json",
 			"locktransforms" : true,
 			"name" : "art-top",
-			"origin" : "14.50000 171.00000 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = initialOrigin.y + (Math.sin(engine.runtime * 0.8 + 2) * 2);\n\treturn value;\n}\n",
+				"value" : "14.50000 171.00000 0.00000"
+			},
 			"parent" : 493,
 			"size" : "803.00000 950.00000",
 			"solid" : true
@@ -1049,14 +1018,18 @@
 							"textures" : [ null, "masks/shake_mask_6fbbd3dd" ]
 						}
 					],
-					"visible" : true
+					"visible" : false
 				}
 			],
 			"id" : 314,
 			"image" : "models/art-bottom.json",
 			"locktransforms" : true,
 			"name" : "art-bottom",
-			"origin" : "-47.00000 -212.00000 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = initialOrigin.y + (Math.sin(engine.runtime * 0.8 + 3) * 2);\n\treturn value;\n}\n",
+				"value" : "-47.00000 -212.00000 0.00000"
+			},
 			"parent" : 493,
 			"size" : "730.00000 847.00000",
 			"solid" : true
@@ -1089,7 +1062,7 @@
 							"textures" : [ null, "masks/shake_mask_6c721b80" ]
 						}
 					],
-					"visible" : true
+					"visible" : false
 				}
 			],
 			"id" : 318,
@@ -1098,8 +1071,8 @@
 			"name" : "art-bottom-cube",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet initialValue;\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = initialValue.y - (Math.sin(engine.runtime) * 2);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialValue = value;\n\treturn value;\n}\n",
-				"value" : "179.50000 -345.00000 0.00000"
+				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = initialOrigin.y - (Math.sin(engine.runtime * 0.8) * 2);\n\treturn value;\n}\n",
+				"value" : "162.00000 -352.00000 0.00000"
 			},
 			"parent" : 493,
 			"size" : "53.00000 46.00000",
@@ -1108,11 +1081,44 @@
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
 			"id" : 246,
-			"instanceoverride" : null,
+			"instanceoverride" : 
+			{
+				"count" : 
+				{
+					"user" : "particlescount",
+					"value" : 1.0
+				},
+				"id" : 47,
+				"lifetime" : 
+				{
+					"user" : "particleslifetime",
+					"value" : 1.0
+				},
+				"size" : 
+				{
+					"user" : "particlessize",
+					"value" : 1.0
+				},
+				"speed" : 
+				{
+					"user" : "particlesspeed",
+					"value" : 1.0
+				}
+			},
 			"locktransforms" : true,
 			"name" : "particles",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.reposition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "0.00000 0.00000 0.00000"
+			},
 			"parent" : 131,
 			"particle" : "particles/stars.json",
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.rescaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "1.00000 1.00000 1.00000"
+			},
 			"visible" : 
 			{
 				"user" : "particles",
@@ -1139,18 +1145,23 @@
 							{
 								"ui_editor_properties_center" : "0.5 0.5",
 								"ui_editor_properties_center_falloff" : 1.0,
-								"ui_editor_properties_strength" : 0.33000001
+								"ui_editor_properties_strength" : 
+								{
+									"user" : "chromaticabberationstrength",
+									"value" : 0.15000001
+								}
 							},
 							"id" : 103
 						}
 					],
-					"visible" : false
+					"visible" : true
 				}
 			],
 			"id" : 96,
 			"image" : "models/util/fullscreenlayer.json",
 			"name" : "chromatic-abberation",
 			"parallaxDepth" : "0.00000 0.00000",
+			"parent" : 131,
 			"solid" : true,
 			"visible" : 
 			{
@@ -1166,19 +1177,18 @@
 			"mintime" : 1.0,
 			"muteineditor" : true,
 			"name" : "audio",
+			"origin" : "-1280.00000 -720.00000 0.00000",
+			"parent" : 131,
 			"playbackmode" : "loop",
 			"sound" : [ "sounds/Fortress of Lies Vocals.mp3" ],
 			"startsilent" : false,
-			"volume" : 
-			{
-				"user" : "musicvolume",
-				"value" : 0.5
-			}
+			"volume" : 1.0
 		},
 		{
+			"angles" : "0.00000 -0.00000 0.00000",
 			"id" : 130,
 			"name" : "resolution-grid",
-			"origin" : "1720.00000 720.00000 0.00000",
+			"parent" : 131,
 			"visible" : false
 		},
 		{
@@ -1186,30 +1196,15 @@
 			"alpha" : 1.0,
 			"angles" : "0.00000 -0.00000 0.00000",
 			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
-			"colorBlendMode" : 0,
-			"copybackground" : true,
-			"id" : 102,
-			"image" : "models/util/solidlayer.json",
-			"name" : "center",
-			"parent" : 130,
-			"size" : "1.00000 1440.00000",
-			"solid" : true
-		},
-		{
-			"alignment" : "center",
-			"alpha" : 1.0,
-			"angles" : "0.00000 -0.00000 0.00000",
-			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 0.00000 0.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
 			"id" : 106,
 			"image" : "models/util/solidlayer.json",
 			"name" : "art-left",
-			"origin" : "-416.00000 0.00000 0.00000",
+			"origin" : "-418.00000 0.00000 0.00000",
 			"parent" : 130,
-			"size" : "1.00000 1440.00000",
+			"size" : "3.00000 1440.00000",
 			"solid" : true
 		},
 		{
@@ -1217,15 +1212,15 @@
 			"alpha" : 1.0,
 			"angles" : "0.00000 -0.00000 0.00000",
 			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 0.00000 0.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
 			"id" : 115,
 			"image" : "models/util/solidlayer.json",
 			"name" : "art-right",
-			"origin" : "417.00000 0.00000 0.00000",
+			"origin" : "418.00000 0.00000 0.00000",
 			"parent" : 130,
-			"size" : "1.00000 1440.00000",
+			"size" : "3.00000 1440.00000",
 			"solid" : true
 		},
 		{
@@ -1233,7 +1228,37 @@
 			"alpha" : 1.0,
 			"angles" : "0.00000 -0.00000 0.00000",
 			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 0.00000 0.00000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"id" : 102,
+			"image" : "models/util/solidlayer.json",
+			"name" : "center-vertical",
+			"parent" : 130,
+			"size" : "3.00000 1440.00000",
+			"solid" : true
+		},
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.00000 -0.00000 1.57080",
+			"brightness" : 1.0,
+			"color" : "1.00000 0.00000 0.00000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"id" : 203,
+			"image" : "models/util/solidlayer.json",
+			"name" : "center-horizontal",
+			"parent" : 130,
+			"size" : "3.00000 2560.00000",
+			"solid" : true
+		},
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.00000 -0.00000 0.00000",
+			"brightness" : 1.0,
+			"color" : "1.00000 0.00000 0.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
 			"id" : 111,
@@ -1241,7 +1266,23 @@
 			"name" : "16:9-left",
 			"origin" : "-1280.00000 0.00000 0.00000",
 			"parent" : 130,
-			"size" : "1.00000 1440.00000",
+			"size" : "3.00000 1440.00000",
+			"solid" : true
+		},
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.00000 -0.00000 1.57080",
+			"brightness" : 1.0,
+			"color" : "1.00000 0.00000 0.00000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"id" : 212,
+			"image" : "models/util/solidlayer.json",
+			"name" : "16:9-top",
+			"origin" : "0.00000 720.00000 0.00000",
+			"parent" : 130,
+			"size" : "3.00000 2560.00000",
 			"solid" : true
 		},
 		{
@@ -1249,7 +1290,7 @@
 			"alpha" : 1.0,
 			"angles" : "0.00000 -0.00000 0.00000",
 			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 0.00000 0.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
 			"id" : 113,
@@ -1257,7 +1298,23 @@
 			"name" : "16:9-right",
 			"origin" : "1280.00000 0.00000 0.00000",
 			"parent" : 130,
-			"size" : "1.00000 1440.00000",
+			"size" : "3.00000 1440.00000",
+			"solid" : true
+		},
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.00000 -0.00000 1.57080",
+			"brightness" : 1.0,
+			"color" : "1.00000 0.00000 0.00000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"id" : 215,
+			"image" : "models/util/solidlayer.json",
+			"name" : "16:9-bottom",
+			"origin" : "0.00000 -720.00000 0.00000",
+			"parent" : 130,
+			"size" : "3.00000 2560.00000",
 			"solid" : true
 		}
 	],
