@@ -3,7 +3,7 @@
 	[
 		{
 			"alphawriting" : "default",
-			"blending" : "normal",
+			"blending" : "translucent",
 			"combos" : 
 			{
 				"VERSION" : 2
@@ -12,8 +12,7 @@
 			"depthtest" : "disabled",
 			"depthwrite" : "disabled",
 			"shader" : "genericimage3",
-			"textures" : [ "background" ],
-			"usertextures" : [ "background" ]
+			"textures" : [ "background" ]
 		}
 	]
 }

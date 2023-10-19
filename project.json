@@ -68,42 +68,18 @@
 			{
 				"condition" : "audiovisualizer.value == true",
 				"fraction" : false,
-				"index" : 31,
+				"index" : 18,
 				"max" : 200,
 				"min" : 1,
-				"order" : 131,
+				"order" : 118,
 				"text" : "Audio Visualizer Bars",
 				"type" : "slider",
 				"value" : 28
 			},
-			"background" : 
-			{
-				"index" : 28,
-				"order" : 128,
-				"text" : "Background",
-				"type" : "scenetexture",
-				"value" : ""
-			},
-			"backgroundheight" : 
-			{
-				"index" : 30,
-				"order" : 130,
-				"text" : "Background Height",
-				"type" : "textinput",
-				"value" : "1440"
-			},
-			"backgroundwidth" : 
-			{
-				"index" : 29,
-				"order" : 129,
-				"text" : "Background Width",
-				"type" : "textinput",
-				"value" : "2560"
-			},
 			"chromaticabberation" : 
 			{
-				"index" : 25,
-				"order" : 125,
+				"index" : 26,
+				"order" : 126,
 				"text" : "Chromatic Abberation",
 				"type" : "bool",
 				"value" : true
@@ -112,10 +88,10 @@
 			{
 				"condition" : "chromaticabberation.value == true",
 				"fraction" : true,
-				"index" : 26,
+				"index" : 27,
 				"max" : 2,
 				"min" : 0,
-				"order" : 126,
+				"order" : 127,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Chromatic Abberation Strength",
@@ -159,8 +135,8 @@
 			"medianame" : 
 			{
 				"condition" : "",
-				"index" : 18,
-				"order" : 118,
+				"index" : 19,
+				"order" : 119,
 				"text" : "Media Name",
 				"type" : "bool",
 				"value" : true
@@ -168,16 +144,16 @@
 			"medianameshadow" : 
 			{
 				"condition" : "",
-				"index" : 19,
-				"order" : 119,
+				"index" : 20,
+				"order" : 120,
 				"text" : "Media Name Shadow",
 				"type" : "bool",
 				"value" : true
 			},
 			"particles" : 
 			{
-				"index" : 20,
-				"order" : 120,
+				"index" : 21,
+				"order" : 121,
 				"text" : "Particles",
 				"type" : "bool",
 				"value" : true
@@ -186,10 +162,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 23,
+				"index" : 24,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 123,
+				"order" : 124,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Count",
@@ -200,10 +176,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 24,
+				"index" : 25,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 124,
+				"order" : 125,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Lifetime",
@@ -214,10 +190,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 22,
+				"index" : 23,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 122,
+				"order" : 123,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Size",
@@ -228,10 +204,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 21,
+				"index" : 22,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 121,
+				"order" : 122,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Speed",
@@ -260,7 +236,7 @@
 				"order" : 0,
 				"text" : "ui_browse_properties_scheme_color",
 				"type" : "color",
-				"value" : "0.6745098039215687 0.6509803921568628 0.5764705882352941"
+				"value" : "0.6745098039215687 0.6470588235294118 0.5764705882352941"
 			},
 			"seconds" : 
 			{
@@ -335,16 +311,14 @@
 			},
 			"vhs" : 
 			{
-				"index" : 27,
-				"order" : 127,
+				"index" : 28,
+				"order" : 128,
 				"text" : "VHS",
 				"type" : "bool",
 				"value" : true
 			}
 		},
-		"supportsaudioprocessing" : true,
-		"supportsvideo" : true,
-		"supportsvideoflags" : 2
+		"supportsaudioprocessing" : true
 	},
 	"preview" : "preview.gif",
 	"snapshotformat" : -1,
