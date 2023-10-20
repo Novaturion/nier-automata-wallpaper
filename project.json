@@ -1,4 +1,7 @@
 {
+	"approved" : true,
+	"contentrating" : "Everyone",
+	"description" : "NieR: Automata wallpaper featuring various characters from the game.\r\n\r\n! If your wallpaper is misaligned after update try to change the Alignment option !\r\n\r\nFeatures:\r\n- Adaptive to different resolutions\r\n- Customizable aspect ratio\r\n- Audio visualizer\r\n- Title of currently playing media\r\n- Time\r\n- Date\r\n- A lot of options to change\r\n\r\nThis wallpaper is a collaborative work by Novaturion and myself.\r\nOriginal artwork by eggloaf.",
 	"file" : "scene.json",
 	"general" : 
 	{
@@ -83,7 +86,7 @@
 				"order" : 119,
 				"text" : "Audio Visualizer Bars",
 				"type" : "slider",
-				"value" : 28
+				"value" : 20
 			},
 			"chromaticabberation" : 
 			{
@@ -289,7 +292,7 @@
 				"order" : 103,
 				"text" : "Text Value",
 				"type" : "textinput",
-				"value" : "Checking System..."
+				"value" : "TODAY"
 			},
 			"time" : 
 			{
@@ -322,9 +325,15 @@
 		"supportsaudioprocessing" : true
 	},
 	"preview" : "preview.gif",
+	"ratingsex" : "none",
+	"ratingviolence" : "none",
 	"snapshotformat" : -1,
 	"snapshotoverlay" : "",
-	"title" : "NieR: Automata",
+	"tags" : [ "Game" ],
+	"title" : "NieR: Automata | Android Machine Robot | eggloaf",
 	"type" : "scene",
-	"version" : 0
+	"version" : 13,
+	"visibility" : "public",
+	"workshopid" : "3002120692",
+	"workshopurl" : "steam://url/CommunityFilePage/3002120692"
 }
