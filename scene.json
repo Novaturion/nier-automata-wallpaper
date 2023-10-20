@@ -34,8 +34,8 @@
 		"nearz" : 0.0099999998,
 		"orthogonalprojection" : 
 		{
-			"height" : 1440,
-			"width" : 2560
+			"height" : 1080,
+			"width" : 1920
 		},
 		"skylightcolor" : "0.30000 0.30000 0.30000",
 		"zoom" : 1.0
@@ -44,14 +44,12 @@
 	[
 		{
 			"id" : 131,
-			"locktransforms" : true,
 			"name" : "root",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nshared.IS_ASPECT_RATIO_LOCKED = false;\n\nshared.REFERENCE_RESOLUTION = new Vec2(2560, 1440);\nshared.REFERENCE_RESOLUTION_HALF = new Vec2(1280, 720);\n\nfunction updateResolutionData(resolution) {\n\tif (shared.IS_ASPECT_RATIO_LOCKED) {\n\t\tresolution.x = resolution.y * shared.ASPECT_RATIO;\n\t}\n\n\tshared.RESOLUTION = resolution;\n\tshared.RESOLUTION_HALF = new Vec2(resolution.x * 0.5, resolution.y * 0.5);\n\n\tshared.SCALE_FACTOR = new Vec2(\n\t\tshared.RESOLUTION.x / shared.REFERENCE_RESOLUTION.x,\n\t\tshared.RESOLUTION.y / shared.REFERENCE_RESOLUTION.y\n\t);\n}\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tshared.IS_ASPECT_RATIO_LOCKED = Number(properties.aspectratio) != 0;\n\t\tshared.ASPECT_RATIO = Number(properties.aspectratio);\n\n\t\tupdateResolutionData(engine.screenResolution);\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tupdateResolutionData(value);\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tupdateResolutionData(engine.screenResolution);\n}\n\nshared.clamp = (num, min, max) => {\n\treturn Math.min(Math.max(num, min), max);\n};\n\nshared.reposition = (origin) => {\n\treturn new Vec2(\n\t\torigin.x * shared.SCALE_FACTOR.x,\n\t\torigin.y * shared.SCALE_FACTOR.y\n\t);\n}\n\nshared.repositionTopLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionCenterLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\t0\n\t);\n}\n\nshared.repositionBottomLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionTopCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\t0\n\t);\n}\n\nshared.repositionBottomCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionTopRight = () => {\n\treturn new Vec2(\n\t\tshared.RESOLUTION_HALF.x,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionCenterRight = () => {\n\treturn new Vec2(\n\t\t0,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionBottomRight = () => {\n\treturn new Vec2(\n\t\tshared.RESOLUTION_HALF.x,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.rescaleX = (scale) => {\n\treturn scale.x * shared.SCALE_FACTOR.x;\n}\n\nshared.rescaleY = (scale) => {\n\treturn scale.y * shared.SCALE_FACTOR.y;\n}\n\nshared.rescaleMin = (scale) => {\n\tlet factor = Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y);\n\treturn new Vec2(\n\t\tscale.x * factor,\n\t\tscale.y * factor\n\t);\n}\n\nshared.rescaleMax = (scale) => {\n\tlet factor = Math.max(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y);\n\treturn new Vec2(\n\t\tscale.x * factor,\n\t\tscale.y * factor\n\t);\n}\n\nshared.rescaleBackground = (width, height) => {\n\tlet factor = Math.max(\n\t\tengine.screenResolution.x / width,\n\t\tengine.screenResolution.y / height\n\t);\n\n\treturn factor;\n}\n",
-				"value" : "1280.00000 720.00000 0.00000"
-			},
-			"scale" : "1.33500 1.33500 1.33500"
+				"script" : "'use strict';\n\nshared.IS_ASPECT_RATIO_LOCKED = false;\n\n// must be same as background resolution\nshared.REFERENCE_RESOLUTION = new Vec2(2560, 1440);\nshared.REFERENCE_RESOLUTION_HALF = new Vec2(shared.REFERENCE_RESOLUTION.x * 0.5, shared.REFERENCE_RESOLUTION.y * 0.5);\n\nfunction updateResolutionData(resolution) {\n\tif (shared.IS_ASPECT_RATIO_LOCKED) {\n\t\tresolution.x = resolution.y * shared.ASPECT_RATIO;\n\t}\n\n\tshared.RESOLUTION = resolution;\n\tshared.RESOLUTION_HALF = new Vec2(resolution.x * 0.5, resolution.y * 0.5);\n\n\tshared.SCALE_FACTOR = new Vec2(\n\t\tshared.RESOLUTION.x / shared.REFERENCE_RESOLUTION.x,\n\t\tshared.RESOLUTION.y / shared.REFERENCE_RESOLUTION.y\n\t);\n}\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tshared.IS_ASPECT_RATIO_LOCKED = Number(properties.aspectratio) != 0;\n\t\tshared.ASPECT_RATIO = Number(properties.aspectratio);\n\n\t\tupdateResolutionData(engine.screenResolution);\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tupdateResolutionData(value);\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tupdateResolutionData(engine.screenResolution);\n}\n\nshared.clamp = (num, min, max) => {\n\treturn Math.min(Math.max(num, min), max);\n};\n\nshared.reposition = (origin) => {\n\treturn new Vec2(\n\t\torigin.x * shared.SCALE_FACTOR.x,\n\t\torigin.y * shared.SCALE_FACTOR.y\n\t);\n}\n\nshared.repositionTopLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionCenterLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\t0\n\t);\n}\n\nshared.repositionBottomLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionTopCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\t0\n\t);\n}\n\nshared.repositionBottomCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionTopRight = () => {\n\treturn new Vec2(\n\t\tshared.RESOLUTION_HALF.x,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionCenterRight = () => {\n\treturn new Vec2(\n\t\t0,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.repositionBottomRight = () => {\n\treturn new Vec2(\n\t\tshared.RESOLUTION_HALF.x,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.rescaleX = (scale) => {\n\treturn scale.x * shared.SCALE_FACTOR.x;\n}\n\nshared.rescaleY = (scale) => {\n\treturn scale.y * shared.SCALE_FACTOR.y;\n}\n\nshared.rescaleMin = (scale) => {\n\tlet factor = Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y);\n\treturn new Vec2(\n\t\tscale.x * factor,\n\t\tscale.y * factor\n\t);\n}\n\nshared.rescaleMax = (scale) => {\n\tlet factor = Math.max(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y);\n\treturn new Vec2(\n\t\tscale.x * factor,\n\t\tscale.y * factor\n\t);\n}\n\nshared.rescaleBackground = (width, height) => {\n\tlet factor = Math.max(\n\t\tengine.screenResolution.x / width,\n\t\tengine.screenResolution.y / height\n\t);\n\n\treturn factor;\n}\n",
+				"value" : "960.00000 540.00000 0.00000"
+			}
 		},
 		{
 			"alignment" : "center",
@@ -63,6 +61,7 @@
 			"copybackground" : true,
 			"id" : 184,
 			"image" : "models/background.json",
+			"locktransforms" : true,
 			"name" : "background",
 			"origin" : 
 			{
@@ -713,6 +712,7 @@
 			],
 			"id" : 284,
 			"image" : "models/util/composelayer.json",
+			"locktransforms" : true,
 			"name" : "audio-visualizer",
 			"origin" : 
 			{
