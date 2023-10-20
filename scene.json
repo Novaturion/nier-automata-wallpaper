@@ -85,7 +85,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tvalue.x = -engine.screenResolution.x * 0.5;\n\t\tvalue.y = engine.screenResolution.y * 0.5;\n\t}\n\n\treturn value;\n}\n",
-				"value" : "-1531.87488 789.41003 0.00000"
+				"value" : "-1280.00000 720.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
@@ -114,7 +114,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tinitialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 5;\n\tvalue.x = initialOrigin.x - delta;\n\tvalue.y = initialOrigin.y + delta;\n\n\treturn value;\n}\n",
-				"value" : "353.19437 -342.62659 0.00000"
+				"value" : "101.31946 -273.21655 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.15500 1.15500 1.00000",
@@ -136,7 +136,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tinitialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 4 + 5;\n\tvalue.x = initialOrigin.x + delta;\n\tvalue.y = initialOrigin.y - delta;\n\n\treturn value;\n}\n",
-				"value" : "374.36163 -352.62830 0.00000"
+				"value" : "122.48682 -283.21826 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.19000 1.19000 1.00000",
@@ -158,7 +158,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "660.00000 -623.00000 0.00000"
+				"value" : "408.12512 -553.58997 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.00000 1.40000 1.00000",
@@ -180,7 +180,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x - (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "840.00000 -689.00000 0.00000"
+				"value" : "588.12512 -619.58997 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.00000 1.55000 1.00000",
@@ -202,7 +202,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "877.00000 -622.00000 0.00000"
+				"value" : "625.12512 -552.58997 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.00000 1.40000 1.00000",
@@ -217,7 +217,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tvalue.x = engine.screenResolution.x * 0.5;\n\t\tvalue.y = -engine.screenResolution.y * 0.5;\n\t}\n\n\treturn value;\n}\n",
-				"value" : "1502.89966 -809.23468 0.00000"
+				"value" : "1280.00000 -720.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
@@ -246,7 +246,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tinitialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 5;\n\tvalue.x = initialOrigin.x - delta;\n\tvalue.y = initialOrigin.y + delta;\n\n\treturn value;\n}\n",
-				"value" : "436.93146 -300.05377 0.00000"
+				"value" : "214.03174 -210.81909 0.00000"
 			},
 			"parent" : 332,
 			"scale" : "1.15500 1.15500 1.00000",
@@ -268,7 +268,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tinitialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 4 + 5;\n\tvalue.x = initialOrigin.x + delta;\n\tvalue.y = initialOrigin.y - delta;\n\n\treturn value;\n}\n",
-				"value" : "455.51093 -320.53925 0.00000"
+				"value" : "232.61133 -231.30457 0.00000"
 			},
 			"parent" : 332,
 			"scale" : "1.19000 1.19000 1.00000",
@@ -290,7 +290,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "660.00000 -623.00000 0.00000"
+				"value" : "437.10022 -533.76538 0.00000"
 			},
 			"parent" : 332,
 			"scale" : "1.00000 1.40000 1.00000",
@@ -312,7 +312,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x - (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "840.00000 -689.00000 0.00000"
+				"value" : "617.10034 -599.76532 0.00000"
 			},
 			"parent" : 332,
 			"scale" : "1.00000 1.55000 1.00000",
@@ -334,7 +334,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet initialOrigin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    initialOrigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = initialOrigin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "877.00000 -622.00000 0.00000"
+				"value" : "654.10034 -532.76532 0.00000"
 			},
 			"parent" : 332,
 			"scale" : "1.00000 1.40000 1.00000",
