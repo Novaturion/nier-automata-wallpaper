@@ -344,8 +344,8 @@
 	"ratingviolence" : "none",
 	"tags" : [ "Game" ],
 	"title" : "NieR: Automata | Android Machine Robot | eggloaf",
-	"type" : "scene",
-	"version" : 13,
+	"type" : "Scene",
+	"version" : 14,
 	"visibility" : "public",
 	"workshopid" : "3002120692",
 	"workshopurl" : "steam://url/CommunityFilePage/3002120692"
