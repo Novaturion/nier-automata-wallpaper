@@ -747,7 +747,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
-				"value" : "844.74365 -503.09164 0.00000"
+				"value" : "820.00000 -495.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
@@ -769,16 +769,16 @@
 			"copybackground" : true,
 			"font" : "fonts/FOT-Rodin Pro DB.otf",
 			"horizontalalign" : "right",
-			"id" : 338,
+			"id" : 149,
 			"limitrows" : true,
 			"limituseellipsis" : false,
 			"limitwidth" : true,
 			"locktransforms" : true,
-			"maxrows" : 3,
-			"maxwidth" : 667.0,
+			"maxrows" : 2,
+			"maxwidth" : 630.0,
 			"name" : "media-name-shadow",
 			"opaquebackground" : false,
-			"origin" : "324.00000 -6.00000 0.00000",
+			"origin" : "371.00000 -8.00000 0.00000",
 			"padding" : 0,
 			"parent" : 119,
 			"pointsize" : 9.5,
@@ -789,7 +789,7 @@
 				"script" : "// Please note: Do not remove this line or asset references may break.\nexport let __workshopId = '2948115830';\n\nlet title = '';\n\nexport function update(value) {\n\treturn title;\n}\n\nexport function mediaPropertiesChanged(event) {\n\ttitle = event.title;\n}\n",
 				"value" : "Media Name"
 			},
-			"verticalalign" : "center",
+			"verticalalign" : "bottom",
 			"visible" : 
 			{
 				"user" : "medianameshadow",
@@ -809,16 +809,16 @@
 			"copybackground" : true,
 			"font" : "fonts/FOT-Rodin Pro DB.otf",
 			"horizontalalign" : "right",
-			"id" : 253,
+			"id" : 144,
 			"limitrows" : true,
 			"limituseellipsis" : false,
 			"limitwidth" : true,
 			"locktransforms" : true,
-			"maxrows" : 3,
-			"maxwidth" : 666.73499,
+			"maxrows" : 2,
+			"maxwidth" : 630.0,
 			"name" : "media-name",
 			"opaquebackground" : false,
-			"origin" : "318.00000 0.00000 0.00000",
+			"origin" : "365.00000 0.00000 0.00000",
 			"padding" : 0,
 			"parent" : 119,
 			"pointsize" : 9.5,
@@ -826,10 +826,10 @@
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "// Please note: Do not remove this line or asset references may break.\nexport let __workshopId = '2948115830';\n\nlet title = '';\n\nexport function update(value) {\n\treturn title;\n}\n\nexport function mediaPropertiesChanged(event) {\n\ttitle = event.title;\n}\n",
+				"script" : "'use strict'\n\nlet title = \"\";\n\n\nexport function mediaPropertiesChanged(event) {\n\ttitle = event.title;\n}\n\nexport function update(value) {\n\treturn title;\n}\n",
 				"value" : "Media Name"
 			},
-			"verticalalign" : "center",
+			"verticalalign" : "bottom",
 			"visible" : 
 			{
 				"user" : "medianame",
