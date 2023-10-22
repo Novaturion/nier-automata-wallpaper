@@ -100,8 +100,30 @@
 			}
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
+			"alignment" : "topleft",
+			"alpha" : 0.15000001,
+			"angles" : "0.00000 -0.00000 0.00000",
+			"brightness" : 1.0,
+			"color" : "1.00000 1.00000 1.00000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"id" : 390,
+			"image" : "models/circle-1.json",
+			"locktransforms" : true,
+			"name" : "circle-1",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n\n",
+				"value" : "-24.00000 24.00000 0.00000"
+			},
+			"parent" : 431,
+			"scale" : "0.95000 0.95000 1.00000",
+			"size" : "818.00000 818.00000",
+			"solid" : true
+		},
+		{
+			"alignment" : "topleft",
+			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.00000",
 			"brightness" : 1.0,
 			"color" : "1.00000 1.00000 1.00000",
@@ -113,105 +135,79 @@
 			"name" : "circle-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 5;\n\tvalue.x = origin.x - delta;\n\tvalue.y = origin.y + delta;\n\n\treturn value;\n}\n",
-				"value" : "101.31946 -273.21655 0.00000"
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x - Math.cos(speed) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y - Math.sin(speed) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n\n",
+				"value" : "-24.00000 24.00000 0.00000"
 			},
 			"parent" : 431,
-			"scale" : "1.15500 1.15500 1.00000",
-			"size" : "1024.00000 602.00000",
+			"size" : "818.00000 818.00000",
 			"solid" : true
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
-			"angles" : "0.00000 -0.00000 0.01047",
-			"brightness" : 1.0,
-			"color" : "1.00000 1.00000 1.00000",
-			"colorBlendMode" : 0,
-			"copybackground" : true,
-			"id" : 390,
-			"image" : "models/circle-1.json",
-			"locktransforms" : true,
-			"name" : "circle-1",
-			"origin" : 
-			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 4 + 5;\n\tvalue.x = origin.x + delta;\n\tvalue.y = origin.y - delta;\n\n\treturn value;\n}\n",
-				"value" : "122.48682 -283.21826 0.00000"
-			},
-			"parent" : 431,
-			"scale" : "1.19000 1.19000 1.00000",
-			"size" : "1024.00000 602.00000",
-			"solid" : true
-		},
-		{
-			"alignment" : "center",
-			"alpha" : 1.0,
+			"alignment" : "top",
+			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "1.00000 1.00000 1.00000",
+			"color" : "0.00000 0.00000 0.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 370,
-			"image" : "models/line-1.json",
+			"id" : 106,
+			"image" : "models/util/solidlayer.json",
 			"locktransforms" : true,
-			"name" : "line-1",
+			"name" : "Solid",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = origin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "408.12512 -553.58997 0.00000"
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"value" : "80.00000 24.00000 0.00000"
 			},
 			"parent" : 431,
-			"scale" : "1.00000 1.40000 1.00000",
-			"size" : "3.00000 1259.00000",
+			"size" : "3.00000 1650.00000",
 			"solid" : true
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
+			"alignment" : "top",
+			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "1.00000 1.00000 1.00000",
+			"color" : "0.00000 0.00000 0.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 352,
-			"image" : "models/line-1.json",
+			"id" : 111,
+			"image" : "models/util/solidlayer.json",
 			"locktransforms" : true,
-			"name" : "line-1",
+			"name" : "Solid",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = origin.x - (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "588.12512 -619.58997 0.00000"
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x - Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y - Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"value" : "-24.00000 24.00000 0.00000"
 			},
 			"parent" : 431,
-			"scale" : "1.00000 1.55000 1.00000",
-			"size" : "3.00000 1259.00000",
+			"size" : "3.00000 2024.00000",
 			"solid" : true
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
+			"alignment" : "top",
+			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "1.00000 1.00000 1.00000",
+			"color" : "0.00000 0.00000 0.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 367,
-			"image" : "models/line-1.json",
+			"id" : 108,
+			"image" : "models/util/solidlayer.json",
 			"locktransforms" : true,
-			"name" : "line-1",
+			"name" : "Solid",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = origin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "625.12512 -552.58997 0.00000"
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"value" : "-24.00000 -80.00000 0.00000"
 			},
 			"parent" : 431,
-			"scale" : "1.00000 1.40000 1.00000",
-			"size" : "3.00000 1259.00000",
+			"size" : "3.00000 1800.00000",
 			"solid" : true
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
-			"id" : 332,
+			"id" : 193,
 			"locktransforms" : true,
 			"name" : "right-lines",
 			"origin" : 
@@ -232,113 +228,109 @@
 			}
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
+			"alignment" : "topleft",
+			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.00000",
 			"brightness" : 1.0,
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 327,
+			"id" : 203,
 			"image" : "models/circle-1.json",
 			"locktransforms" : true,
 			"name" : "circle-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 5;\n\tvalue.x = origin.x - delta;\n\tvalue.y = origin.y + delta;\n\n\treturn value;\n}\n",
-				"value" : "214.03174 -210.81909 0.00000"
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n\n",
+				"value" : "-24.00000 24.00000 0.00000"
 			},
-			"parent" : 332,
-			"scale" : "1.15500 1.15500 1.00000",
-			"size" : "1024.00000 602.00000",
+			"parent" : 193,
+			"scale" : "0.95000 0.95000 1.00000",
+			"size" : "818.00000 818.00000",
 			"solid" : true
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
-			"angles" : "0.00000 -0.00000 0.01047",
+			"alignment" : "topleft",
+			"alpha" : 0.15000001,
+			"angles" : "0.00000 -0.00000 0.00000",
 			"brightness" : 1.0,
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 321,
+			"id" : 200,
 			"image" : "models/circle-1.json",
 			"locktransforms" : true,
 			"name" : "circle-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet delta = Math.sin(engine.runtime) * 4 + 5;\n\tvalue.x = origin.x + delta;\n\tvalue.y = origin.y - delta;\n\n\treturn value;\n}\n",
-				"value" : "232.61133 -231.30457 0.00000"
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x - Math.cos(speed) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y - Math.sin(speed) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n\n",
+				"value" : "-24.00000 24.00000 0.00000"
 			},
-			"parent" : 332,
-			"scale" : "1.19000 1.19000 1.00000",
-			"size" : "1024.00000 602.00000",
+			"parent" : 193,
+			"size" : "818.00000 818.00000",
 			"solid" : true
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
+			"alignment" : "top",
+			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "1.00000 1.00000 1.00000",
+			"color" : "0.00000 0.00000 0.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 319,
-			"image" : "models/line-1.json",
+			"id" : 198,
+			"image" : "models/util/solidlayer.json",
 			"locktransforms" : true,
-			"name" : "line-1",
+			"name" : "Solid",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = origin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "437.10022 -533.76538 0.00000"
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"value" : "80.00000 24.00000 0.00000"
 			},
-			"parent" : 332,
-			"scale" : "1.00000 1.40000 1.00000",
-			"size" : "3.00000 1259.00000",
+			"parent" : 193,
+			"size" : "3.00000 1650.00000",
 			"solid" : true
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
+			"alignment" : "top",
+			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "1.00000 1.00000 1.00000",
+			"color" : "0.00000 0.00000 0.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 316,
-			"image" : "models/line-1.json",
+			"id" : 196,
+			"image" : "models/util/solidlayer.json",
 			"locktransforms" : true,
-			"name" : "line-1",
+			"name" : "Solid",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = origin.x - (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "617.10034 -599.76532 0.00000"
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x - Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y - Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"value" : "-24.00000 24.00000 0.00000"
 			},
-			"parent" : 332,
-			"scale" : "1.00000 1.55000 1.00000",
-			"size" : "3.00000 1259.00000",
+			"parent" : 193,
+			"size" : "3.00000 2024.00000",
 			"solid" : true
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
+			"alignment" : "top",
+			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "1.00000 1.00000 1.00000",
+			"color" : "0.00000 0.00000 0.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 313,
-			"image" : "models/line-1.json",
+			"id" : 194,
+			"image" : "models/util/solidlayer.json",
 			"locktransforms" : true,
-			"name" : "line-1",
+			"name" : "Solid",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.x = origin.x + (Math.sin(engine.runtime) * 10);\n\treturn value;\n}\n",
-				"value" : "654.10034 -532.76532 0.00000"
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"value" : "-24.00000 -80.00000 0.00000"
 			},
-			"parent" : 332,
-			"scale" : "1.00000 1.40000 1.00000",
-			"size" : "3.00000 1259.00000",
+			"parent" : 193,
+			"size" : "3.00000 1800.00000",
 			"solid" : true
 		},
 		{
