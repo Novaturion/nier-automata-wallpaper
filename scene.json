@@ -345,17 +345,17 @@
 			"angles" : "0.00000 -0.00000 0.00000",
 			"id" : 128,
 			"locktransforms" : true,
-			"name" : "system-text",
+			"name" : "left-top-text",
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet position = shared.getPosition(origin);\n\t\tvalue.x = position.x;\n\t\tvalue.y = position.y;\n\t}\n\n\treturn value;\n}\n",
-				"value" : "-837.21722 476.25964 0.00000"
+				"value" : "-820.00000 495.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
 				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
-				"value" : "1.25000 1.25000 1.25000"
+				"value" : "1.00000 1.00000 1.00000"
 			}
 		},
 		{
@@ -380,11 +380,11 @@
 			"maxwidth" : 500.0,
 			"name" : "text-shadow",
 			"opaquebackground" : false,
-			"origin" : "-275.00000 -6.00000 0.00000",
+			"origin" : "-357.00000 -6.00000 0.00000",
 			"padding" : 0,
 			"parent" : 128,
-			"pointsize" : 14.0,
-			"size" : "202.00000 117.00000",
+			"pointsize" : 16.0,
+			"size" : "231.00000 133.00000",
 			"solid" : true,
 			"text" : 
 			{
@@ -411,7 +411,7 @@
 			"copybackground" : true,
 			"font" : "fonts/FOT-Rodin Pro DB.otf",
 			"horizontalalign" : "left",
-			"id" : 359,
+			"id" : 113,
 			"limitrows" : false,
 			"limituseellipsis" : false,
 			"limitwidth" : false,
@@ -420,11 +420,11 @@
 			"maxwidth" : 500.0,
 			"name" : "text",
 			"opaquebackground" : false,
-			"origin" : "-281.00000 0.00000 0.00000",
+			"origin" : "-365.00000 0.00000 0.00000",
 			"padding" : 0,
 			"parent" : 128,
-			"pointsize" : 14.0,
-			"size" : "202.00000 117.00000",
+			"pointsize" : 16.0,
+			"size" : "231.00000 133.00000",
 			"solid" : true,
 			"text" : 
 			{
