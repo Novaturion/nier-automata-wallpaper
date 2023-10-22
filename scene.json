@@ -723,7 +723,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
-				"value" : "781.17773 -31.22864 0.00000"
+				"value" : "787.00000 -31.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
