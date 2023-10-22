@@ -3,7 +3,7 @@
 	[
 		{
 			"alphawriting" : "default",
-			"blending" : "translucent",
+			"blending" : "normal",
 			"combos" : 
 			{
 				"VERSION" : 2
