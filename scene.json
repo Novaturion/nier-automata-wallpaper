@@ -446,7 +446,7 @@
 			"origin" : 
 			{
 				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
-				"value" : "-829.52118 -24.35901 0.00000"
+				"value" : "-820.00000 0.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
@@ -472,7 +472,7 @@
 			"image" : "models/pointer.json",
 			"locktransforms" : true,
 			"name" : "pointer",
-			"origin" : "-334.00000 0.00000 0.00000",
+			"origin" : "-346.00000 0.00000 0.00000",
 			"parent" : 294,
 			"size" : "61.00000 178.00000",
 			"solid" : true,
@@ -494,7 +494,7 @@
 			"image" : "models/clock-bar-lines.json",
 			"locktransforms" : true,
 			"name" : "time-bar-lines",
-			"origin" : "56.00000 47.00000 0.00000",
+			"origin" : "51.47876 52.64099 0.00000",
 			"parent" : 294,
 			"size" : "684.00000 100.00000",
 			"solid" : true,
@@ -520,13 +520,35 @@
 			"image" : "models/clock-bar.json",
 			"locktransforms" : true,
 			"name" : "time-bar",
-			"origin" : "56.00000 47.00000 0.00000",
+			"origin" : "51.47876 52.64099 0.00000",
 			"parent" : 294,
 			"size" : "687.00000 81.00000",
 			"solid" : true,
 			"visible" : 
 			{
 				"user" : "timebar",
+				"value" : true
+			}
+		},
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.00000 -0.00000 0.00000",
+			"brightness" : 1.0,
+			"color" : "1.00000 1.00000 1.00000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"id" : 366,
+			"image" : "models/date-bar.json",
+			"locktransforms" : true,
+			"name" : "date-bar",
+			"origin" : "50.47876 -50.35901 0.00000",
+			"parent" : 294,
+			"size" : "672.00000 65.00000",
+			"solid" : true,
+			"visible" : 
+			{
+				"user" : "datebar",
 				"value" : true
 			}
 		},
@@ -549,16 +571,19 @@
 			"limitwidth" : true,
 			"locktransforms" : true,
 			"maxrows" : 1,
-			"maxwidth" : 476.75928,
+			"maxwidth" : 560.0,
 			"name" : "time",
 			"opaquebackground" : false,
-			"origin" : "-219.00000 50.00000 0.00000",
-			"padding" : 32,
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "-229.00000 54.00000 0.00000"
+			},
+			"padding" : 0,
 			"parent" : 294,
 			"perspective" : true,
-			"pointsize" : 7.5,
-			"scale" : "1.28086 1.28086 1.28086",
-			"size" : "209.00000 63.00000",
+			"pointsize" : 8.0,
+			"size" : "228.00000 67.00000",
 			"solid" : true,
 			"text" : 
 			{
@@ -596,28 +621,6 @@
 			}
 		},
 		{
-			"alignment" : "center",
-			"alpha" : 1.0,
-			"angles" : "0.00000 -0.00000 0.00000",
-			"brightness" : 1.0,
-			"color" : "1.00000 1.00000 1.00000",
-			"colorBlendMode" : 0,
-			"copybackground" : true,
-			"id" : 366,
-			"image" : "models/date-bar.json",
-			"locktransforms" : true,
-			"name" : "date-bar",
-			"origin" : "56.00000 -56.00000 0.00000",
-			"parent" : 294,
-			"size" : "672.00000 65.00000",
-			"solid" : true,
-			"visible" : 
-			{
-				"user" : "datebar",
-				"value" : true
-			}
-		},
-		{
 			"alpha" : 1.0,
 			"anchor" : "none",
 			"angles" : "0.00000 -0.00000 0.00000",
@@ -636,15 +639,18 @@
 			"limitwidth" : true,
 			"locktransforms" : true,
 			"maxrows" : 1,
-			"maxwidth" : 476.77698,
+			"maxwidth" : 559.79053,
 			"name" : "date",
 			"opaquebackground" : false,
-			"origin" : "-219.00000 -54.00000 0.00000",
-			"padding" : 69,
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "-229.00000 -49.00000 0.00000"
+			},
+			"padding" : 0,
 			"parent" : 294,
-			"pointsize" : 7.0,
-			"scale" : "1.28086 1.28086 1.28086",
-			"size" : "465.00000 58.00000",
+			"pointsize" : 8.0,
+			"size" : "534.00000 67.00000",
 			"solid" : true,
 			"text" : 
 			{
@@ -662,7 +668,7 @@
 					},
 					"useDelimiter" : false
 				},
-				"value" : "Wednesday 13 September 2023"
+				"value" : "Wednesday 23 September 2023"
 			},
 			"verticalalign" : "center",
 			"visible" : 
