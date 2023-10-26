@@ -105,8 +105,8 @@
 			},
 			"chromaticabberation" : 
 			{
-				"index" : 27,
-				"order" : 127,
+				"index" : 28,
+				"order" : 128,
 				"text" : "Chromatic Abberation",
 				"type" : "bool",
 				"value" : true
@@ -115,10 +115,10 @@
 			{
 				"condition" : "chromaticabberation.value == true",
 				"fraction" : true,
-				"index" : 28,
+				"index" : 29,
 				"max" : 2,
 				"min" : 0,
-				"order" : 128,
+				"order" : 129,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Chromatic Abberation Strength",
@@ -159,6 +159,14 @@
 				"type" : "bool",
 				"value" : true
 			},
+			"mediacover" : 
+			{
+				"index" : 22,
+				"order" : 122,
+				"text" : "Media Cover",
+				"type" : "bool",
+				"value" : true
+			},
 			"medianame" : 
 			{
 				"condition" : "",
@@ -179,8 +187,8 @@
 			},
 			"particles" : 
 			{
-				"index" : 22,
-				"order" : 122,
+				"index" : 23,
+				"order" : 123,
 				"text" : "Particles",
 				"type" : "bool",
 				"value" : true
@@ -189,10 +197,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 25,
+				"index" : 26,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 125,
+				"order" : 126,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Count",
@@ -203,10 +211,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 26,
+				"index" : 27,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 126,
+				"order" : 127,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Lifetime",
@@ -217,10 +225,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 24,
+				"index" : 25,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 124,
+				"order" : 125,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Size",
@@ -231,10 +239,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 23,
+				"index" : 24,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 123,
+				"order" : 124,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Speed",
@@ -337,14 +345,16 @@
 				"value" : true
 			}
 		},
-		"supportsaudioprocessing" : true
+		"supportsaudioprocessing" : true,
+		"supportsvideo" : true,
+		"supportsvideoflags" : 2
 	},
 	"preview" : "preview.gif",
 	"ratingsex" : "none",
 	"ratingviolence" : "none",
 	"tags" : [ "Game" ],
 	"title" : "NieR: Automata | Android Machine Robot | eggloaf",
-	"type" : "Scene",
+	"type" : "scene",
 	"version" : 14,
 	"visibility" : "public",
 	"workshopid" : "3002120692",
