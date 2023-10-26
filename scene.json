@@ -1160,7 +1160,7 @@
 			],
 			"id" : 96,
 			"image" : "models/util/fullscreenlayer.json",
-			"name" : "chromatic-abberation",
+			"name" : "chromatic-aberration",
 			"parallaxDepth" : "0.00000 0.00000",
 			"parent" : 131,
 			"solid" : true,
