@@ -1151,7 +1151,8 @@
 									"value" : 0.15000001
 								}
 							},
-							"id" : 103
+							"id" : 103,
+							"textures" : [ null, "chromatic-abberation-mask" ]
 						}
 					],
 					"visible" : true
