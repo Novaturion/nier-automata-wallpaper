@@ -1014,7 +1014,11 @@
 			"image" : "models/art-center-no-characers.json",
 			"locktransforms" : true,
 			"name" : "art-center-no-characers",
-			"origin" : "-15.50012 -20.00006 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (Math.sin(engine.runtime * 0.8) * 2);\n\treturn value;\n}\n",
+				"value" : "-15.50012 -20.00006 0.00000"
+			},
 			"parent" : 148,
 			"scale" : "0.90000 0.90000 1.00000",
 			"size" : "701.00000 510.00000",
@@ -1032,7 +1036,11 @@
 			"image" : "models/art-top-no-characers.json",
 			"locktransforms" : true,
 			"name" : "art-top-no-characers",
-			"origin" : "14.49988 170.99994 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (Math.sin(engine.runtime * 0.8 + 2) * 2);\n\treturn value;\n}\n",
+				"value" : "14.49988 170.99994 0.00000"
+			},
 			"parent" : 148,
 			"scale" : "0.90000 0.90000 1.00000",
 			"size" : "803.00000 950.00000",
@@ -1050,7 +1058,11 @@
 			"image" : "models/art-bottom-no-characers.json",
 			"locktransforms" : true,
 			"name" : "art-bottom-no-characers",
-			"origin" : "-47.00006 -212.00006 0.00000",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (Math.sin(engine.runtime * 0.8 + 3) * 2);\n\treturn value;\n}\n",
+				"value" : "-47.00006 -212.00006 0.00000"
+			},
 			"parent" : 148,
 			"scale" : "0.90000 0.90000 1.00000",
 			"size" : "730.00000 847.00000",
