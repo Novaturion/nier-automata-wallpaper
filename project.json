@@ -1,7 +1,7 @@
 {
 	"approved" : true,
 	"contentrating" : "Everyone",
-	"description" : "NieR: Automata wallpaper featuring various characters from the game.\r\n\r\nFor auto-scaling to work correctly, set the alignment to center.\r\n\r\nFeatures:\r\n- Adaptive to different resolutions\r\n- Customizable aspect ratio\r\n- Audio visualizer\r\n- Title of currently playing media\r\n- Time\r\n- Date\r\n- A lot of options to change\r\n\r\nThis wallpaper is a collaborative work by Novaturion and myself.\r\nOriginal artwork by eggloaf.",
+	"description" : "NieR: Automata wallpaper featuring various characters from the game.\r\n\r\nFor auto-scaling to work correctly, set the alignment to center.\r\n\r\nFeatures:\r\n- Adaptive to different resolutions\r\n- Customizable aspect ratio\r\n- Audio visualizer\r\n- Title and cover of currently playing media\r\n- Time\r\n- Date\r\n- Two versions of the art\r\n- A lot of options to change\r\n\r\nThis wallpaper is a collaborative work by Novaturion and myself.\r\nOriginal artwork by eggloaf.",
 	"file" : "scene.json",
 	"general" : 
 	{
