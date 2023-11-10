@@ -1,8 +1,8 @@
 {
 	"camera" : 
 	{
-		"center" : "0.00000 0.00000 -1.00000",
-		"eye" : "0.00000 0.00000 0.00000",
+		"center" : "76.61436 74.33971 -1.00000",
+		"eye" : "76.61436 74.33971 0.00000",
 		"up" : "0.00000 1.00000 0.00000"
 	},
 	"general" : 
@@ -109,13 +109,176 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 390,
+			"id" : 204,
 			"image" : "models/circle-1.json",
 			"locktransforms" : true,
 			"name" : "circle-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n\n",
+				"animation" : 
+				{
+					"c0" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : -0.0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 210,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						}
+					],
+					"c1" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 105,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 315,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -0.00244
+						}
+					],
+					"c2" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"options" : 
+					{
+						"fps" : 30,
+						"length" : 420,
+						"mode" : "loop",
+						"wraploop" : true
+					},
+					"relative" : true
+				},
 				"value" : "-24.00000 24.00000 0.00000"
 			},
 			"parent" : 431,
@@ -131,13 +294,158 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 330,
+			"id" : 428,
 			"image" : "models/circle-1.json",
 			"locktransforms" : true,
 			"name" : "circle-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x - Math.cos(speed) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y - Math.sin(speed) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n\n",
+				"animation" : 
+				{
+					"c0" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : -0.0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 210,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						}
+					],
+					"c1" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 105,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 315,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -0.00244
+						}
+					],
+					"c2" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"options" : 
+					{
+						"fps" : 30,
+						"length" : 420,
+						"mode" : "loop",
+						"wraploop" : true
+					},
+					"relative" : true
+				},
 				"value" : "-24.00000 24.00000 0.00000"
 			},
 			"parent" : 431,
@@ -147,22 +455,204 @@
 		{
 			"alignment" : "top",
 			"alpha" : 0.15000001,
-			"angles" : "0.00000 -0.00000 0.78540",
+			"angles" : "0.00000 0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 106,
-			"image" : "models/util/solidlayer.json",
+			"id" : 190,
+			"image" : "models/line-1.json",
 			"locktransforms" : true,
-			"name" : "Solid",
+			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"animation" : 
+				{
+					"c0" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 210,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						}
+					],
+					"c1" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 105,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 315,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"c2" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"options" : 
+					{
+						"fps" : 30,
+						"length" : 420,
+						"mode" : "loop",
+						"wraploop" : true
+					},
+					"relative" : true
+				},
 				"value" : "80.00000 24.00000 0.00000"
 			},
 			"parent" : 431,
-			"size" : "3.00000 1650.00000",
+			"scale" : "1.00000 1.61000 1.00000",
+			"size" : "4.00000 1024.00000",
 			"solid" : true
 		},
 		{
@@ -170,20 +660,184 @@
 			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 111,
-			"image" : "models/util/solidlayer.json",
+			"id" : 178,
+			"image" : "models/line-1.json",
 			"locktransforms" : true,
-			"name" : "Solid",
+			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x - Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y - Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"animation" : 
+				{
+					"c0" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : -0.0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 210,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						}
+					],
+					"c1" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 105,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 315,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -0.00244
+						}
+					],
+					"c2" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"options" : 
+					{
+						"fps" : 30,
+						"length" : 420,
+						"mode" : "loop",
+						"wraploop" : true
+					},
+					"relative" : true
+				},
 				"value" : "-24.00000 24.00000 0.00000"
 			},
 			"parent" : 431,
-			"size" : "3.00000 2024.00000",
+			"scale" : "1.00000 1.98000 1.00000",
+			"size" : "4.00000 1024.00000",
 			"solid" : true
 		},
 		{
@@ -191,20 +845,184 @@
 			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 108,
-			"image" : "models/util/solidlayer.json",
+			"id" : 180,
+			"image" : "models/line-1.json",
 			"locktransforms" : true,
-			"name" : "Solid",
+			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"animation" : 
+				{
+					"c0" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 210,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						}
+					],
+					"c1" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 105,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 315,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : -0.0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"c2" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"options" : 
+					{
+						"fps" : 30,
+						"length" : 420,
+						"mode" : "loop",
+						"wraploop" : true
+					},
+					"relative" : true
+				},
 				"value" : "-24.00000 -80.00000 0.00000"
 			},
 			"parent" : 431,
-			"size" : "3.00000 1800.00000",
+			"scale" : "1.00000 1.76000 1.00000",
+			"size" : "4.00000 1024.00000",
 			"solid" : true
 		},
 		{
@@ -237,13 +1055,176 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 203,
+			"id" : 188,
 			"image" : "models/circle-1.json",
 			"locktransforms" : true,
 			"name" : "circle-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n\n",
+				"animation" : 
+				{
+					"c0" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : -0.0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 210,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						}
+					],
+					"c1" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 105,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 315,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -0.00244
+						}
+					],
+					"c2" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"options" : 
+					{
+						"fps" : 30,
+						"length" : 420,
+						"mode" : "loop",
+						"wraploop" : true
+					},
+					"relative" : true
+				},
 				"value" : "-24.00000 24.00000 0.00000"
 			},
 			"parent" : 193,
@@ -259,13 +1240,158 @@
 			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 200,
+			"id" : 186,
 			"image" : "models/circle-1.json",
 			"locktransforms" : true,
 			"name" : "circle-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x - Math.cos(speed) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y - Math.sin(speed) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n\n",
+				"animation" : 
+				{
+					"c0" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : -0.0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 210,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						}
+					],
+					"c1" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 105,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 315,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -0.00244
+						}
+					],
+					"c2" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"options" : 
+					{
+						"fps" : 30,
+						"length" : 420,
+						"mode" : "loop",
+						"wraploop" : true
+					},
+					"relative" : true
+				},
 				"value" : "-24.00000 24.00000 0.00000"
 			},
 			"parent" : 193,
@@ -275,22 +1401,204 @@
 		{
 			"alignment" : "top",
 			"alpha" : 0.15000001,
-			"angles" : "0.00000 -0.00000 0.78540",
+			"angles" : "0.00000 0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 198,
-			"image" : "models/util/solidlayer.json",
+			"id" : 189,
+			"image" : "models/line-1.json",
 			"locktransforms" : true,
-			"name" : "Solid",
+			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"animation" : 
+				{
+					"c0" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 210,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						}
+					],
+					"c1" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 105,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 315,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"c2" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"options" : 
+					{
+						"fps" : 30,
+						"length" : 420,
+						"mode" : "loop",
+						"wraploop" : true
+					},
+					"relative" : true
+				},
 				"value" : "80.00000 24.00000 0.00000"
 			},
 			"parent" : 193,
-			"size" : "3.00000 1650.00000",
+			"scale" : "1.00000 1.61000 1.00000",
+			"size" : "4.00000 1024.00000",
 			"solid" : true
 		},
 		{
@@ -298,20 +1606,184 @@
 			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 196,
-			"image" : "models/util/solidlayer.json",
+			"id" : 185,
+			"image" : "models/line-1.json",
 			"locktransforms" : true,
-			"name" : "Solid",
+			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x - Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y - Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"animation" : 
+				{
+					"c0" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : -0.0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 210,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						}
+					],
+					"c1" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 105,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 315,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -0.00244
+						}
+					],
+					"c2" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"options" : 
+					{
+						"fps" : 30,
+						"length" : 420,
+						"mode" : "loop",
+						"wraploop" : true
+					},
+					"relative" : true
+				},
 				"value" : "-24.00000 24.00000 0.00000"
 			},
 			"parent" : 193,
-			"size" : "3.00000 2024.00000",
+			"scale" : "1.00000 1.98000 1.00000",
+			"size" : "4.00000 1024.00000",
 			"solid" : true
 		},
 		{
@@ -319,20 +1791,184 @@
 			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"brightness" : 1.0,
-			"color" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 1.00000 1.00000",
 			"colorBlendMode" : 0,
 			"copybackground" : true,
-			"id" : 194,
-			"image" : "models/util/solidlayer.json",
+			"id" : 182,
+			"image" : "models/line-1.json",
 			"locktransforms" : true,
-			"name" : "Solid",
+			"name" : "line-1",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tlet speed = engine.runtime * 0.5;\n\tvalue.x = origin.x + Math.cos(speed + 3) * shared.LINES_AMPLITUDE;\n\tvalue.y = origin.y + Math.sin(speed + 3) * shared.LINES_AMPLITUDE;\n\n\treturn value;\n}\n",
+				"animation" : 
+				{
+					"c0" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 210,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						}
+					],
+					"c1" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -0.0,
+								"y" : -0.0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 105,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : -10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 315,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 10
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 0,
+								"y" : -0.0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"c2" : 
+					[
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 0,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						},
+						{
+							"back" : 
+							{
+								"enabled" : true,
+								"x" : -1,
+								"y" : 0
+							},
+							"frame" : 419,
+							"front" : 
+							{
+								"enabled" : true,
+								"x" : 1,
+								"y" : 0
+							},
+							"lockangle" : true,
+							"locklength" : true,
+							"value" : 0
+						}
+					],
+					"options" : 
+					{
+						"fps" : 30,
+						"length" : 420,
+						"mode" : "loop",
+						"wraploop" : true
+					},
+					"relative" : true
+				},
 				"value" : "-24.00000 -80.00000 0.00000"
 			},
 			"parent" : 193,
-			"size" : "3.00000 1800.00000",
+			"scale" : "1.00000 1.76000 1.00000",
+			"size" : "4.00000 1024.00000",
 			"solid" : true
 		},
 		{
@@ -814,7 +2450,7 @@
 			"copybackground" : true,
 			"font" : "fonts/FOT-Rodin Pro DB.otf",
 			"horizontalalign" : "right",
-			"id" : 149,
+			"id" : 120,
 			"limitrows" : true,
 			"limituseellipsis" : false,
 			"limitwidth" : true,
@@ -829,18 +2465,18 @@
 			"pointsize" : 
 			{
 				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
-				"value" : 9.5
+				"value" : 10.0
 			},
 			"scale" : 
 			{
 				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
-			"size" : "240.00000 79.00000",
+			"size" : "255.00000 83.00000",
 			"solid" : true,
 			"text" : 
 			{
-				"script" : "// Please note: Do not remove this line or asset references may break.\nexport let __workshopId = '2948115830';\n\nlet title = '';\n\nexport function update(value) {\n\treturn title;\n}\n\nexport function mediaPropertiesChanged(event) {\n\ttitle = event.title;\n}\n",
+				"script" : "'use strict';\n\n\nexport function mediaPropertiesChanged(event) {\n\tthisLayer.text = event.title;\n}\n\n/**\n * @param {String} value - for property 'text'\n * @return {String} - update current property value\n */\nexport function init(value) {\n\treturn \"\";\n}\n",
 				"value" : "Media Name"
 			},
 			"verticalalign" : "bottom",
