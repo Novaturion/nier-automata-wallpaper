@@ -10,8 +10,8 @@
 			"_24hrformat" : 
 			{
 				"condition" : "clock.value == true && time.value == true",
-				"index" : 10,
-				"order" : 110,
+				"index" : 11,
+				"order" : 111,
 				"text" : "24hr format",
 				"type" : "bool",
 				"value" : false
@@ -19,15 +19,15 @@
 			"ampm" : 
 			{
 				"condition" : "clock.value == true && time.value == true && _24hrformat.value == false",
-				"index" : 11,
-				"order" : 111,
+				"index" : 12,
+				"order" : 112,
 				"text" : "AM/PM",
 				"type" : "bool",
 				"value" : true
 			},
 			"art" : 
 			{
-				"index" : 15,
+				"index" : 16,
 				"options" : 
 				[
 					{
@@ -43,7 +43,7 @@
 						"value" : "no-characters"
 					}
 				],
-				"order" : 115,
+				"order" : 116,
 				"text" : "Art",
 				"type" : "combo",
 				"value" : "default"
@@ -85,8 +85,8 @@
 			},
 			"audiovisualizer" : 
 			{
-				"index" : 18,
-				"order" : 118,
+				"index" : 19,
+				"order" : 119,
 				"text" : "Audio Visualizer",
 				"type" : "bool",
 				"value" : true
@@ -95,18 +95,18 @@
 			{
 				"condition" : "audiovisualizer.value == true",
 				"fraction" : false,
-				"index" : 19,
+				"index" : 20,
 				"max" : 200,
 				"min" : 1,
-				"order" : 119,
+				"order" : 120,
 				"text" : "Audio Visualizer Bars",
 				"type" : "slider",
 				"value" : 20
 			},
 			"chromaticabberation" : 
 			{
-				"index" : 28,
-				"order" : 128,
+				"index" : 29,
+				"order" : 129,
 				"text" : "Chromatic Abberation",
 				"type" : "bool",
 				"value" : true
@@ -115,10 +115,10 @@
 			{
 				"condition" : "chromaticabberation.value == true",
 				"fraction" : true,
-				"index" : 29,
+				"index" : 30,
 				"max" : 2,
 				"min" : 0,
-				"order" : 129,
+				"order" : 130,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Chromatic Abberation Strength",
@@ -136,8 +136,8 @@
 			"date" : 
 			{
 				"condition" : "clock.value == true",
-				"index" : 12,
-				"order" : 112,
+				"index" : 13,
+				"order" : 113,
 				"text" : "Date",
 				"type" : "bool",
 				"value" : true
@@ -145,24 +145,24 @@
 			"datebar" : 
 			{
 				"condition" : "clock.value == true",
-				"index" : 13,
-				"order" : 113,
+				"index" : 14,
+				"order" : 114,
 				"text" : "Date Bar",
 				"type" : "bool",
 				"value" : true
 			},
 			"lefttoplines" : 
 			{
-				"index" : 16,
-				"order" : 116,
+				"index" : 17,
+				"order" : 117,
 				"text" : "Left Top Lines",
 				"type" : "bool",
 				"value" : true
 			},
 			"mediacover" : 
 			{
-				"index" : 22,
-				"order" : 122,
+				"index" : 23,
+				"order" : 123,
 				"text" : "Media Cover",
 				"type" : "bool",
 				"value" : true
@@ -170,8 +170,8 @@
 			"medianame" : 
 			{
 				"condition" : "",
-				"index" : 20,
-				"order" : 120,
+				"index" : 21,
+				"order" : 121,
 				"text" : "Media Name",
 				"type" : "bool",
 				"value" : true
@@ -179,16 +179,16 @@
 			"medianameshadow" : 
 			{
 				"condition" : "",
-				"index" : 21,
-				"order" : 121,
+				"index" : 22,
+				"order" : 122,
 				"text" : "Media Name Shadow",
 				"type" : "bool",
 				"value" : true
 			},
 			"particles" : 
 			{
-				"index" : 23,
-				"order" : 123,
+				"index" : 24,
+				"order" : 124,
 				"text" : "Particles",
 				"type" : "bool",
 				"value" : true
@@ -197,10 +197,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 26,
+				"index" : 27,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 126,
+				"order" : 127,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Count",
@@ -211,10 +211,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 27,
+				"index" : 28,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 127,
+				"order" : 128,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Lifetime",
@@ -225,10 +225,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 25,
+				"index" : 26,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 125,
+				"order" : 126,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Size",
@@ -239,10 +239,10 @@
 			{
 				"condition" : "particles.value == true",
 				"fraction" : true,
-				"index" : 24,
+				"index" : 25,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 124,
+				"order" : 125,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Speed",
@@ -260,8 +260,8 @@
 			},
 			"rightbottomlines" : 
 			{
-				"index" : 17,
-				"order" : 117,
+				"index" : 18,
+				"order" : 118,
 				"text" : "Right Bottom Lines",
 				"type" : "bool",
 				"value" : true
@@ -276,8 +276,8 @@
 			"seconds" : 
 			{
 				"condition" : "clock.value == true && time.value == true",
-				"index" : 9,
-				"order" : 109,
+				"index" : 10,
+				"order" : 110,
 				"text" : "Seconds",
 				"type" : "bool",
 				"value" : true
@@ -285,8 +285,8 @@
 			"showday" : 
 			{
 				"condition" : "clock.value == true && date.value == true",
-				"index" : 14,
-				"order" : 114,
+				"index" : 15,
+				"order" : 115,
 				"text" : "Show Day",
 				"type" : "bool",
 				"value" : true
@@ -335,11 +335,20 @@
 				"type" : "bool",
 				"value" : true
 			},
+			"timebarblinking" : 
+			{
+				"condition" : "timebar.value == true",
+				"index" : 8,
+				"order" : 108,
+				"text" : "Time Bar Blinking",
+				"type" : "bool",
+				"value" : true
+			},
 			"timebarlines" : 
 			{
 				"condition" : "clock.value == true",
-				"index" : 8,
-				"order" : 108,
+				"index" : 9,
+				"order" : 109,
 				"text" : "Time Bar Lines",
 				"type" : "bool",
 				"value" : true
