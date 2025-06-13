@@ -1962,15 +1962,23 @@
 			"font" : "fonts/FOT-Rodin Pro DB.otf",
 			"horizontalalign" : "left",
 			"id" : 251,
-			"limitrows" : false,
-			"limituseellipsis" : false,
-			"limitwidth" : false,
+			"limitrows" : true,
+			"limituseellipsis" : true,
+			"limitwidth" : true,
 			"locktransforms" : true,
-			"maxrows" : 1,
-			"maxwidth" : 500.0,
+			"maxrows" : 
+			{
+				"user" : "titlerows",
+				"value" : 3
+			},
+			"maxwidth" : 
+			{
+				"user" : "titlelength",
+				"value" : 790.0
+			},
 			"name" : "text-shadow",
 			"opaquebackground" : false,
-			"origin" : "-357.00000 -8.00000 0.00000",
+			"origin" : "-357.00000 24.00000 0.00000",
 			"padding" : 0,
 			"parent" : 128,
 			"pointsize" : 
@@ -1986,13 +1994,13 @@
 			"size" : "247.00000 142.00000",
 			"text" : 
 			{
-				"user" : "textvalue",
+				"user" : "titletext",
 				"value" : "TODAY"
 			},
-			"verticalalign" : "center",
+			"verticalalign" : "top",
 			"visible" : 
 			{
-				"user" : "textshadow",
+				"user" : "titleshadow",
 				"value" : true
 			}
 		},
@@ -2008,15 +2016,23 @@
 			"font" : "fonts/FOT-Rodin Pro DB.otf",
 			"horizontalalign" : "left",
 			"id" : 113,
-			"limitrows" : false,
-			"limituseellipsis" : false,
-			"limitwidth" : false,
+			"limitrows" : true,
+			"limituseellipsis" : true,
+			"limitwidth" : true,
 			"locktransforms" : true,
-			"maxrows" : 1,
-			"maxwidth" : 500.0,
+			"maxrows" : 
+			{
+				"user" : "titlerows",
+				"value" : 3
+			},
+			"maxwidth" : 
+			{
+				"user" : "titlelength",
+				"value" : 790.0
+			},
 			"name" : "text",
 			"opaquebackground" : false,
-			"origin" : "-365.00000 0.00000 0.00000",
+			"origin" : "-365.00000 32.00000 0.00000",
 			"padding" : 0,
 			"parent" : 128,
 			"pointsize" : 
@@ -2032,13 +2048,13 @@
 			"size" : "247.00000 142.00000",
 			"text" : 
 			{
-				"user" : "textvalue",
+				"user" : "titletext",
 				"value" : "TODAY"
 			},
-			"verticalalign" : "center",
+			"verticalalign" : "top",
 			"visible" : 
 			{
-				"user" : "text",
+				"user" : "title",
 				"value" : true
 			}
 		},
@@ -2604,7 +2620,12 @@
 			},
 			"parent" : 493,
 			"scale" : "0.90000 0.90000 1.00000",
-			"size" : "53.00000 46.00000"
+			"size" : "53.00000 46.00000",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == thisLayer.name;\n\t}\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
