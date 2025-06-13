@@ -2490,7 +2490,7 @@
 			"name" : "art-center",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (Math.sin(engine.runtime * 0.8) * 2);\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (\n\t\tMath.sin(engine.runtime * animation.x) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "-15.50012 -20.00006 0.00000"
 			},
 			"parent" : 147,
@@ -2506,7 +2506,7 @@
 			"name" : "art-top",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (Math.sin(engine.runtime * 0.8 + 2) * 2);\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 2) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "14.49988 170.99994 0.00000"
 			},
 			"parent" : 147,
@@ -2522,7 +2522,7 @@
 			"name" : "art-bottom",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (Math.sin(engine.runtime * 0.8 + 3) * 2);\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 4) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "-47.00006 -212.00006 0.00000"
 			},
 			"parent" : 147,
@@ -2551,7 +2551,7 @@
 			"name" : "art-center-no-characers",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (Math.sin(engine.runtime * 0.8) * 2);\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (\n\t\tMath.sin(engine.runtime * animation.x) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "-15.50012 -20.00006 0.00000"
 			},
 			"parent" : 148,
@@ -2567,7 +2567,7 @@
 			"name" : "art-top-no-characers",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (Math.sin(engine.runtime * 0.8 + 2) * 2);\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 2) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "14.49988 170.99994 0.00000"
 			},
 			"parent" : 148,
@@ -2583,7 +2583,7 @@
 			"name" : "art-bottom-no-characers",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (Math.sin(engine.runtime * 0.8 + 3) * 2);\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 4) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "-47.00006 -212.00006 0.00000"
 			},
 			"parent" : 148,
@@ -2599,7 +2599,7 @@
 			"name" : "art-bottom-cube",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == \"default\" || properties.art == \"no-characters\";\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (Math.sin(engine.runtime * 0.8) * 2);\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (\n\t\tMath.sin(engine.runtime * animation.x) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "174.00000 -355.00000 0.00000"
 			},
 			"parent" : 493,

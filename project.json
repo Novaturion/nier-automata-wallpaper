@@ -25,9 +25,51 @@
 				"type" : "bool",
 				"value" : false
 			},
+			"animationamplitude" : 
+			{
+				"condition" : "art.value != \"none\"",
+				"fraction" : true,
+				"index" : 30,
+				"max" : 10,
+				"min" : 0,
+				"order" : 130,
+				"precision" : 3,
+				"step" : 0.01,
+				"text" : "Animation Amplitude",
+				"type" : "slider",
+				"value" : 2
+			},
+			"animationshift" : 
+			{
+				"condition" : "art.value != \"none\"",
+				"fraction" : true,
+				"index" : 31,
+				"max" : 3.14,
+				"min" : 0,
+				"order" : 131,
+				"precision" : 3,
+				"step" : 0.01,
+				"text" : "Animation Shift",
+				"type" : "slider",
+				"value" : 1
+			},
+			"animationspeed" : 
+			{
+				"condition" : "art.value != \"none\"",
+				"fraction" : true,
+				"index" : 29,
+				"max" : 10,
+				"min" : 0,
+				"order" : 129,
+				"precision" : 3,
+				"step" : 0.01,
+				"text" : "Animation Speed",
+				"type" : "slider",
+				"value" : 0.8
+			},
 			"art" : 
 			{
-				"index" : 24,
+				"index" : 26,
 				"options" : 
 				[
 					{
@@ -43,7 +85,7 @@
 						"value" : "no-characters"
 					}
 				],
-				"order" : 124,
+				"order" : 126,
 				"text" : "Art",
 				"type" : "combo",
 				"value" : "default"
@@ -60,10 +102,10 @@
 			{
 				"condition" : "art.value != \"none\"",
 				"fraction" : false,
-				"index" : 25,
+				"index" : 27,
 				"max" : 5000,
 				"min" : -5000,
-				"order" : 125,
+				"order" : 127,
 				"text" : "Art Horizontal Offset",
 				"type" : "slider",
 				"value" : 0
@@ -72,10 +114,10 @@
 			{
 				"condition" : "art.value != \"none\"",
 				"fraction" : false,
-				"index" : 26,
+				"index" : 28,
 				"max" : 3000,
 				"min" : -3000,
-				"order" : 126,
+				"order" : 128,
 				"text" : "Art Vertical Offset",
 				"type" : "slider",
 				"value" : 0
@@ -117,8 +159,8 @@
 			},
 			"audiovisualizer" : 
 			{
-				"index" : 30,
-				"order" : 130,
+				"index" : 33,
+				"order" : 133,
 				"text" : "Audio Visualizer",
 				"type" : "bool",
 				"value" : true
@@ -127,18 +169,18 @@
 			{
 				"condition" : "audiovisualizer.value == true",
 				"fraction" : false,
-				"index" : 31,
+				"index" : 34,
 				"max" : 200,
 				"min" : 1,
-				"order" : 131,
+				"order" : 134,
 				"text" : "Audio Visualizer Bars",
 				"type" : "slider",
 				"value" : 20
 			},
 			"audiovisualizergroup" : 
 			{
-				"index" : 29,
-				"order" : 129,
+				"index" : 32,
+				"order" : 132,
 				"text" : "Audio Visualizer",
 				"type" : "group",
 				"value" : ""
@@ -147,10 +189,10 @@
 			{
 				"condition" : "audiovisualizer.value",
 				"fraction" : false,
-				"index" : 32,
+				"index" : 35,
 				"max" : 5000,
 				"min" : -5000,
-				"order" : 132,
+				"order" : 135,
 				"text" : "Audio Visualizer Horizontal Offset",
 				"type" : "slider",
 				"value" : 0
@@ -159,10 +201,10 @@
 			{
 				"condition" : "audiovisualizer.value",
 				"fraction" : false,
-				"index" : 33,
+				"index" : 36,
 				"max" : 3000,
 				"min" : -3000,
-				"order" : 133,
+				"order" : 136,
 				"text" : "Audio Visualizer Vertical Offset",
 				"type" : "slider",
 				"value" : 0
@@ -182,8 +224,8 @@
 			},
 			"chromaticabberation" : 
 			{
-				"index" : 49,
-				"order" : 149,
+				"index" : 52,
+				"order" : 152,
 				"text" : "Chromatic Abberation",
 				"type" : "bool",
 				"value" : true
@@ -191,8 +233,8 @@
 			"chromaticabberationgroup" : 
 			{
 				"condition" : "",
-				"index" : 48,
-				"order" : 148,
+				"index" : 51,
+				"order" : 151,
 				"text" : "Chromatic Aberration",
 				"type" : "group",
 				"value" : ""
@@ -201,10 +243,10 @@
 			{
 				"condition" : "",
 				"fraction" : true,
-				"index" : 50,
+				"index" : 53,
 				"max" : 2,
 				"min" : 0,
-				"order" : 150,
+				"order" : 153,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Chromatic Abberation Strength",
@@ -272,16 +314,16 @@
 			},
 			"lefttoplines" : 
 			{
-				"index" : 27,
-				"order" : 127,
+				"index" : 24,
+				"order" : 124,
 				"text" : "Left Top Lines",
 				"type" : "bool",
 				"value" : true
 			},
 			"media" : 
 			{
-				"index" : 35,
-				"order" : 135,
+				"index" : 38,
+				"order" : 138,
 				"text" : "Media",
 				"type" : "bool",
 				"value" : true
@@ -289,16 +331,16 @@
 			"mediacover" : 
 			{
 				"condition" : "media.value",
-				"index" : 38,
-				"order" : 138,
+				"index" : 41,
+				"order" : 141,
 				"text" : "Media Cover",
 				"type" : "bool",
 				"value" : true
 			},
 			"mediagroup" : 
 			{
-				"index" : 34,
-				"order" : 134,
+				"index" : 37,
+				"order" : 137,
 				"text" : "Media",
 				"type" : "group",
 				"value" : ""
@@ -306,8 +348,8 @@
 			"medianame" : 
 			{
 				"condition" : "media.value",
-				"index" : 36,
-				"order" : 136,
+				"index" : 39,
+				"order" : 139,
 				"text" : "Media Name",
 				"type" : "bool",
 				"value" : true
@@ -315,8 +357,8 @@
 			"medianameshadow" : 
 			{
 				"condition" : "media.value",
-				"index" : 37,
-				"order" : 137,
+				"index" : 40,
+				"order" : 140,
 				"text" : "Media Name Shadow",
 				"type" : "bool",
 				"value" : true
@@ -325,10 +367,10 @@
 			{
 				"condition" : "media.value",
 				"fraction" : false,
-				"index" : 39,
+				"index" : 42,
 				"max" : 5000,
 				"min" : -5000,
-				"order" : 139,
+				"order" : 142,
 				"text" : "Media Horizontal Offset",
 				"type" : "slider",
 				"value" : 0
@@ -337,18 +379,18 @@
 			{
 				"condition" : "media.value",
 				"fraction" : false,
-				"index" : 40,
+				"index" : 43,
 				"max" : 3000,
 				"min" : -3000,
-				"order" : 140,
+				"order" : 143,
 				"text" : "Media Vertical Offset",
 				"type" : "slider",
 				"value" : 0
 			},
 			"particles" : 
 			{
-				"index" : 42,
-				"order" : 142,
+				"index" : 45,
+				"order" : 145,
 				"text" : "Particles",
 				"type" : "bool",
 				"value" : true
@@ -357,10 +399,10 @@
 			{
 				"condition" : "particles.value",
 				"fraction" : true,
-				"index" : 46,
+				"index" : 49,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 146,
+				"order" : 149,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Count",
@@ -369,8 +411,8 @@
 			},
 			"particlesgroup" : 
 			{
-				"index" : 41,
-				"order" : 141,
+				"index" : 44,
+				"order" : 144,
 				"text" : "Particles",
 				"type" : "group",
 				"value" : ""
@@ -379,10 +421,10 @@
 			{
 				"condition" : "particles.value",
 				"fraction" : true,
-				"index" : 47,
+				"index" : 50,
 				"max" : 2,
 				"min" : 0.01,
-				"order" : 147,
+				"order" : 150,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Lifetime",
@@ -393,10 +435,10 @@
 			{
 				"condition" : "particles.value",
 				"fraction" : true,
-				"index" : 43,
+				"index" : 46,
 				"max" : 5,
 				"min" : 0.01,
-				"order" : 143,
+				"order" : 146,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Playback Rate",
@@ -407,10 +449,10 @@
 			{
 				"condition" : "particles.value",
 				"fraction" : true,
-				"index" : 45,
+				"index" : 48,
 				"max" : 5,
 				"min" : 0.01,
-				"order" : 145,
+				"order" : 148,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Size",
@@ -421,10 +463,10 @@
 			{
 				"condition" : "particles.value",
 				"fraction" : true,
-				"index" : 44,
+				"index" : 47,
 				"max" : 5,
 				"min" : 0.01,
-				"order" : 144,
+				"order" : 147,
 				"precision" : 3,
 				"step" : 0.01,
 				"text" : "Particles Speed",
@@ -442,8 +484,8 @@
 			},
 			"rightbottomlines" : 
 			{
-				"index" : 28,
-				"order" : 128,
+				"index" : 25,
+				"order" : 125,
 				"text" : "Right Bottom Lines",
 				"type" : "bool",
 				"value" : true
