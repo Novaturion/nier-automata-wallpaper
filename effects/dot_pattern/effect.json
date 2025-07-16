@@ -1,0 +1,19 @@
+{
+	"dependencies" : 
+	[
+		"materials/effects/dot_pattern.json",
+		"shaders/effects/dot_pattern.frag",
+		"shaders/effects/dot_pattern.vert"
+	],
+	"editable" : true,
+	"group" : "localeffects",
+	"name" : "Dot Pattern",
+	"passes" : 
+	[
+		{
+			"material" : "materials/effects/dot_pattern.json"
+		}
+	],
+	"replacementkey" : "dot_pattern",
+	"version" : 1
+}
