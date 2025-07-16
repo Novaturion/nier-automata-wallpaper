@@ -75,6 +75,26 @@
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
 			"castshadow" : false,
+			"id" : 200,
+			"image" : "models/background.json",
+			"locktransforms" : true,
+			"name" : "image",
+			"parent" : 158,
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\n\n// todo: replaceable background\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n\n\t// \tif (properties.hasOwnProperty('backgroundwidth')) {\n\t// \t\twidth = Number(properties.backgroundwidth);\n\t// \t\tisResolutionChanged = true;\n\t// \t}\n\t// \tif (properties.hasOwnProperty('backgroundheight')) {\n\t// \t\theight = Number(properties.backgroundheight);\n\t// \t\tisResolutionChanged = true;\n\t// \t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleBackground(thisLayer.size);\n\t\tlet maxScale = Math.max(newScale.x, newScale.y);\n\n\t\tvalue.x = maxScale;\n\t\tvalue.y = maxScale;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "1.00000 1.00000 1.00000"
+			},
+			"size" : "8192.00000 1440.00000",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('background')) {\n\t\tthisLayer.visible = properties.background == thisLayer.name;\n\t}\n}\n",
+				"value" : true
+			}
+		},
+		{
+			"angles" : "0.00000 -0.00000 0.00000",
+			"castshadow" : false,
 			"color" : "0.67451 0.64706 0.57647",
 			"effects" : 
 			[
@@ -120,6 +140,11 @@
 									"user" : "dotsspacing",
 									"value" : 4
 								},
+								"Is Dots Enabled" : 
+								{
+									"script" : "'use strict';\n\nlet isEnabled = 1;\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('dots')) {\n\t\tisEnabled = Number(properties.dots);\n\t}\n}\n\n/**\n * @param {Number} value - for property 'Is Dots Enabled'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\treturn isEnabled;\n}\n",
+									"value" : 1
+								},
 								"blurriness" : 159.67
 							},
 							"id" : 234,
@@ -149,26 +174,6 @@
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"size" : "2048.00000 1024.00000",
-			"visible" : 
-			{
-				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('background')) {\n\t\tthisLayer.visible = properties.background == thisLayer.name;\n\t}\n}\n",
-				"value" : true
-			}
-		},
-		{
-			"angles" : "0.00000 -0.00000 0.00000",
-			"castshadow" : false,
-			"id" : 200,
-			"image" : "models/background.json",
-			"locktransforms" : true,
-			"name" : "image",
-			"parent" : 158,
-			"scale" : 
-			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\n\n// todo: replaceable background\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n\n\t// \tif (properties.hasOwnProperty('backgroundwidth')) {\n\t// \t\twidth = Number(properties.backgroundwidth);\n\t// \t\tisResolutionChanged = true;\n\t// \t}\n\t// \tif (properties.hasOwnProperty('backgroundheight')) {\n\t// \t\theight = Number(properties.backgroundheight);\n\t// \t\tisResolutionChanged = true;\n\t// \t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleBackground(thisLayer.size);\n\t\tlet maxScale = Math.max(newScale.x, newScale.y);\n\n\t\tvalue.x = maxScale;\n\t\tvalue.y = maxScale;\n\t}\n\n\treturn value;\n}\n",
-				"value" : "1.00000 1.00000 1.00000"
-			},
-			"size" : "8192.00000 1440.00000",
 			"visible" : 
 			{
 				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('background')) {\n\t\tthisLayer.visible = properties.background == thisLayer.name;\n\t}\n}\n",

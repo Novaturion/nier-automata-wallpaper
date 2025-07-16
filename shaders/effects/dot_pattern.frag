@@ -1,4 +1,6 @@
 
+uniform float u_IsDotsEnabled; // {"material":"Is Dots Enabled","int":true,"default":1,"range":[0,1]}
+
 uniform float u_DotRadius; // {"material":"Dot Radius","default":0.02,"range":[0,100]}
 uniform float u_DotSpacing; // {"material":"Dot Spacing","default":4,"range":[1,100]}
 uniform float u_DotBlurAmount; // {"material":"Dot Blur Amount","default":0.005,"range":[0,1]}
@@ -22,7 +24,7 @@ void main() {
 	vec2 cellCoord = (floor(gridCoord) + 0.5) * cellSize;
 	float dist = distance(uv, cellCoord);
 
-	float dotMask = smoothstep(dotRadius, dotRadius - blurAmount, dist);
+	float dotMask = smoothstep(dotRadius, dotRadius - blurAmount, dist) * u_IsDotsEnabled;
 	// float dotMask = smoothstep(u_DotRadius - blurAmount, u_DotRadius + blurAmount, dist);
 
 	gl_FragColor = vec4(mix(u_BackgroundColor, u_DotColor, dotMask), 1.0);
