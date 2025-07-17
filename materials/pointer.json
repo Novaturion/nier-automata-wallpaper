@@ -2,15 +2,17 @@
 	"passes" : 
 	[
 		{
+			"alphawriting" : "default",
 			"blending" : "translucent",
 			"combos" : 
 			{
+				"FOG" : 1,
 				"VERSION" : 2
 			},
 			"cullmode" : "nocull",
 			"depthtest" : "disabled",
 			"depthwrite" : "disabled",
-			"shader" : "genericimage3",
+			"shader" : "genericimage4",
 			"textures" : [ "pointer" ]
 		}
 	]

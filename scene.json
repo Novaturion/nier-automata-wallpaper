@@ -27,7 +27,7 @@
 		"camerashakeamplitude" : 0.5,
 		"camerashakeroughness" : 1.0,
 		"camerashakespeed" : 3.0,
-		"clearcolor" : "0.67451 0.64706 0.57647",
+		"clearcolor" : "0.67843 0.65098 0.58039",
 		"clearenabled" : true,
 		"farz" : 10000.0,
 		"fov" : 50.0,
@@ -37,8 +37,8 @@
 		"nearz" : 0.0099999998,
 		"orthogonalprojection" : 
 		{
-			"height" : 1080,
-			"width" : 1920
+			"height" : 1440,
+			"width" : 2560
 		},
 		"perspectiveoverridefov" : 95.0,
 		"skylightcolor" : "0.30000 0.30000 0.30000",
@@ -53,32 +53,132 @@
 			"id" : 131,
 			"locktransforms" : true,
 			"name" : "root",
-			"origin" : "960.00000 540.00000 0.00000",
+			"origin" : "1280.00000 720.00000 0.00000",
+			"scale" : 
+			{
+				"user" : "resolutionscale",
+				"value" : "1.00000 1.00000 1.00000"
+			},
 			"visible" : 
 			{
-				"script" : "'use strict';\n\nshared.IS_ASPECT_RATIO_LOCKED = false;\n\nshared.LINES_AMPLITUDE = 10;\n\n// must be same as background (not scene) resolution\nshared.REFERENCE_RESOLUTION = new Vec2(2560, 1440);\nshared.REFERENCE_RESOLUTION_HALF = new Vec2(shared.REFERENCE_RESOLUTION.x * 0.5, shared.REFERENCE_RESOLUTION.y * 0.5);\n\n\nfunction updateResolutionData(resolution) {\n\tif (shared.IS_ASPECT_RATIO_LOCKED) {\n\t\tresolution.x = resolution.y * shared.ASPECT_RATIO;\n\t}\n\n\tshared.RESOLUTION = resolution;\n\tshared.RESOLUTION_HALF = new Vec2(resolution.x * 0.5, resolution.y * 0.5);\n\tshared.RESOLUTION_REAL = engine.screenResolution;\n\n\tshared.SCALE_FACTOR = new Vec2(\n\t\tshared.RESOLUTION.x / shared.REFERENCE_RESOLUTION.x,\n\t\tshared.RESOLUTION.y / shared.REFERENCE_RESOLUTION.y\n\t);\n}\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tshared.IS_ASPECT_RATIO_LOCKED = Number(properties.aspectratio) != 0;\n\t\tshared.ASPECT_RATIO = Number(properties.aspectratio);\n\n\t\tupdateResolutionData(engine.screenResolution);\n\t}\n}\n\n/**\n * @param {Number} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tupdateResolutionData(value);\n}\n\n/**\n * @param {Number} value - for property 'visible'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tupdateResolutionData(engine.screenResolution);\n}\n\n\nshared.clamp = (num, min, max) => {\n\treturn Math.min(Math.max(num, min), max);\n};\n\nshared.getPosition = (origin) => {\n\treturn new Vec2(\n\t\torigin.x * shared.SCALE_FACTOR.x,\n\t\torigin.y * shared.SCALE_FACTOR.y\n\t);\n}\n\nshared.getPositionTopLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionCenterLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\t0\n\t);\n}\n\nshared.getPositionBottomLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionTopCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\t0\n\t);\n}\n\nshared.getPositionBottomCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionTopRight = () => {\n\treturn new Vec2(\n\t\tshared.RESOLUTION_HALF.x,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionCenterRight = () => {\n\treturn new Vec2(\n\t\t0,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionBottomRight = () => {\n\treturn new Vec2(\n\t\tshared.RESOLUTION_HALF.x,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getScaleX = (scale) => {\n\treturn scale.x * shared.SCALE_FACTOR.x;\n}\n\nshared.getScaleY = (scale) => {\n\treturn scale.y * shared.SCALE_FACTOR.y;\n}\n\nshared.getScaleMin = (scale) => {\n\tlet factor = Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y);\n\treturn new Vec2(\n\t\tscale.x * factor,\n\t\tscale.y * factor\n\t);\n}\n\nshared.getScaleMax = (scale) => {\n\tlet factor = Math.max(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y);\n\treturn new Vec2(\n\t\tscale.x * factor,\n\t\tscale.y * factor\n\t);\n}\n\nshared.getScaleBackground = (resolution) => {\n\tlet factor = Math.max(\n\t\tengine.screenResolution.x / resolution.x,\n\t\tengine.screenResolution.y / resolution.y\n\t);\n\n\treturn factor;\n}\n\nshared.getFontSize = (size, scale) => {\n\treturn Math.round(size * scale * 100) / 100;\n}\n",
+				"script" : "'use strict';\n\nshared.IS_AUTO_RESOLUTION = true;\nshared.IS_ASPECT_RATIO_LOCKED = false;\n\nshared.LINES_AMPLITUDE = 10;\n\nshared.RESOLUTION_REFERENCE = new Vec2(2560, 1440);\nshared.RESOLUTION_REFERENCE_HALF = new Vec2(shared.RESOLUTION_REFERENCE.x * 0.5, shared.RESOLUTION_REFERENCE.y * 0.5);\n\n// resolution set by user if they want to disable autoresolution\nshared.RESOLUTION_FIXED = new Vec2(shared.RESOLUTION_REFERENCE);\nshared.RESOLUTION_FIXED_HALF = new Vec2(shared.RESOLUTION_FIXED.x * 0.5, shared.RESOLUTION_FIXED.y * 0.5);\n\nshared.RESOLUTION_REAL = new Vec2(0, 0);\nshared.RESOLUTION_REAL_HALF = new Vec2(0, 0);\n\nshared.POSITION_OFFSET = new Vec2(0, 0);\n\nfunction updateResolutionData(resolution) {\n\tshared.RESOLUTION = new Vec2(resolution);\n\n\tif (shared.IS_ASPECT_RATIO_LOCKED) {\n\t\tshared.RESOLUTION.x = Math.round(shared.RESOLUTION.y * shared.ASPECT_RATIO);\n\t}\n\n\tshared.RESOLUTION_HALF = new Vec2(shared.RESOLUTION.x * 0.5, shared.RESOLUTION.y * 0.5);\n\n\tshared.RESOLUTION_REAL = new Vec2(engine.screenResolution);\n\tshared.RESOLUTION_REAL_HALF = new Vec2(engine.screenResolution.x * 0.5, engine.screenResolution.y * 0.5);\n\n\tshared.SCALE_FACTOR = new Vec2(\n\t\tshared.RESOLUTION.x / shared.RESOLUTION_REFERENCE.x,\n\t\tshared.RESOLUTION.y / shared.RESOLUTION_REFERENCE.y\n\t);\n\n\tshared.POSITION_OFFSET = new Vec2(\n\t\t(shared.RESOLUTION.x - shared.RESOLUTION_REFERENCE.x * shared.SCALE_FACTOR.x) * 0.5,\n\t\t(shared.RESOLUTION.y - shared.RESOLUTION_REFERENCE.y * shared.SCALE_FACTOR.y) * 0.5\n\t);\n}\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('autoresolution')) {\n\t\tshared.IS_AUTO_RESOLUTION = properties.autoresolution;\n\t}\n\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tshared.IS_ASPECT_RATIO_LOCKED = Number(properties.aspectratio) != 0;\n\t\tshared.ASPECT_RATIO = Number(properties.aspectratio);\n\t}\n\n\tif (properties.hasOwnProperty('resolutionx')) {\n\t\tshared.RESOLUTION_FIXED.x = Number(properties.resolutionx);\n\t\tshared.RESOLUTION_FIXED_HALF.x = Number(properties.resolutionx * 0.5);\n\t}\n\tif (properties.hasOwnProperty('resolutiony')) {\n\t\tshared.RESOLUTION_FIXED.y = Number(properties.resolutiony);\n\t\tshared.RESOLUTION_FIXED_HALF.y = Number(properties.resolutiony * 0.5);\n\t}\n\n\tif (shared.IS_AUTO_RESOLUTION) {\n\t\tupdateResolutionData(engine.screenResolution);\n\t}\n\telse {\n\t\tupdateResolutionData(shared.RESOLUTION_FIXED);\n\t}\n}\n\n/**\n * @param {Number} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tupdateResolutionData(value);\n}\n\n/**\n * @param {Number} value - for property 'visible'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tupdateResolutionData(engine.screenResolution);\n}\n\n\nshared.clamp = (num, min, max) => {\n\treturn Math.min(Math.max(num, min), max);\n};\n\nshared.getPosition = (origin) => {\n\treturn new Vec2(\n\t\torigin.x * shared.SCALE_FACTOR.x + shared.POSITION_OFFSET.x,\n\t\torigin.y * shared.SCALE_FACTOR.y + shared.POSITION_OFFSET.y\n\t);\n}\n\nshared.getPositionTopLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionCenterLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\t0\n\t);\n}\n\nshared.getPositionBottomLeft = () => {\n\treturn new Vec2(\n\t\t-shared.RESOLUTION_HALF.x,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionTopCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\t0\n\t);\n}\n\nshared.getPositionBottomCenter = () => {\n\treturn new Vec2(\n\t\t0,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionTopRight = () => {\n\treturn new Vec2(\n\t\tshared.RESOLUTION_HALF.x,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionCenterRight = () => {\n\treturn new Vec2(\n\t\t0,\n\t\tshared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getPositionBottomRight = () => {\n\treturn new Vec2(\n\t\tshared.RESOLUTION_HALF.x,\n\t\t-shared.RESOLUTION_HALF.y\n\t);\n}\n\nshared.getScaleX = (scale) => {\n\treturn scale.x * shared.SCALE_FACTOR.x;\n}\n\nshared.getScaleY = (scale) => {\n\treturn scale.y * shared.SCALE_FACTOR.y;\n}\n\nshared.getScale = (scale) => {\n\treturn new Vec2(\n\t\tscale.x * shared.SCALE_FACTOR.x,\n\t\tscale.y * shared.SCALE_FACTOR.y\n\t);\n}\n\nshared.getScaleMin = (scale) => {\n\tlet factor = Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y);\n\treturn new Vec2(\n\t\tscale.x * factor,\n\t\tscale.y * factor\n\t);\n}\n\nshared.getScaleMax = (scale) => {\n\tlet factor = Math.max(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y);\n\treturn new Vec2(\n\t\tscale.x * factor,\n\t\tscale.y * factor\n\t);\n}\n\nshared.getScaleBackground = (backgroundResolution) => {\n\tif (shared.IS_AUTO_RESOLUTION) {\n\t\treturn new Vec2(\n\t\t\tshared.RESOLUTION_REAL.x / backgroundResolution.x,\n\t\t\tshared.RESOLUTION_REAL.y / backgroundResolution.y\n\t\t);\n\t}\n\telse {\n\t\treturn new Vec2(\n\t\t\tshared.RESOLUTION_FIXED.x / backgroundResolution.x,\n\t\t\tshared.RESOLUTION_FIXED.y / backgroundResolution.y\n\t\t);\n\t}\n\n}\n\nshared.getFontSize = (size, scale) => {\n\treturn Math.round(size * scale * 100) / 100;\n}\n",
+				"value" : true
+			}
+		},
+		{
+			"angles" : "0.00000 -0.00000 0.00000",
+			"id" : 158,
+			"locktransforms" : true,
+			"name" : "background",
+			"parent" : 131
+		},
+		{
+			"angles" : "0.00000 -0.00000 0.00000",
+			"castshadow" : false,
+			"id" : 200,
+			"image" : "models/background.json",
+			"locktransforms" : true,
+			"name" : "image",
+			"parent" : 158,
+			"scale" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\n\n// todo: replaceable background\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n\n\t// \tif (properties.hasOwnProperty('backgroundwidth')) {\n\t// \t\twidth = Number(properties.backgroundwidth);\n\t// \t\tisResolutionChanged = true;\n\t// \t}\n\t// \tif (properties.hasOwnProperty('backgroundheight')) {\n\t// \t\theight = Number(properties.backgroundheight);\n\t// \t\tisResolutionChanged = true;\n\t// \t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleBackground(thisLayer.size);\n\t\tlet maxScale = Math.max(newScale.x, newScale.y);\n\n\t\tvalue.x = maxScale;\n\t\tvalue.y = maxScale;\n\t}\n\n\treturn value;\n}\n",
+				"value" : "1.00000 1.00000 1.00000"
+			},
+			"size" : "8192.00000 1440.00000",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('background')) {\n\t\tthisLayer.visible = properties.background == thisLayer.name;\n\t}\n}\n",
 				"value" : true
 			}
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
 			"castshadow" : false,
-			"id" : 184,
-			"image" : "models/background.json",
-			"locktransforms" : true,
-			"name" : "background",
-			"origin" : 
+			"color" : "0.67451 0.64706 0.57647",
+			"effects" : 
+			[
+				{
+					"file" : "effects/dot_pattern/effect.json",
+					"id" : 233,
+					"name" : "",
+					"passes" : 
+					[
+						{
+							"constantshadervalues" : 
+							{
+								"Background Color" : 
+								{
+									"user" : "backgroundcolor",
+									"value" : "0.67843 0.65098 0.58039"
+								},
+								"Blur Amount" : 62,
+								"Blurriness" : 19.530001,
+								"Cell Size" : 256,
+								"Dot Blur Amount" : 
+								{
+									"user" : "dotsbluramount",
+									"value" : 0.0049999999
+								},
+								"Dot Color" : 
+								{
+									"user" : "dotscolor",
+									"value" : "0.74118 0.71373 0.64706"
+								},
+								"Dot Radius" : 
+								{
+									"user" : "dotsradius",
+									"value" : 0.02
+								},
+								"Dot Spacing" : 
+								{
+									"user" : "dotsspacing",
+									"value" : 4
+								},
+								"Dot To Cell Ratio" : 
+								{
+									"user" : "dotsspacing",
+									"value" : 4
+								},
+								"Is Dots Enabled" : 
+								{
+									"script" : "'use strict';\n\nlet isEnabled = 1;\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('dots')) {\n\t\tisEnabled = Number(properties.dots);\n\t}\n}\n\n/**\n * @param {Number} value - for property 'Is Dots Enabled'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\treturn isEnabled;\n}\n",
+									"value" : 1
+								},
+								"blurriness" : 159.67
+							},
+							"id" : 234,
+							"textures" : [ "_rt_imageLayerComposite_229_a" ]
+						}
+					],
+					"visible" : true
+				}
+			],
+			"id" : 229,
+			"image" : "models/solid_instance_model_5f82b719.json",
+			"instance" : 
 			{
-				"script" : "// 'use strict';\n\n// let isResolutionChanged = true;\n\n// let origin = new Vec2();\n// let offset = new Vec2();\n\n\n// todo: replaceable background\n// export function applyUserProperties(properties) {\n// \tif (properties.hasOwnProperty('backgroundhorizontaloffset')) {\n// \t\tisResolutionChanged = true;\n\n// \t\toffset.x = Number(properties.backgroundhorizontaloffset);\n// \t}\n\n// \tif (properties.hasOwnProperty('backgroundverticaloffset')) {\n// \t\tisResolutionChanged = true;\n\n// \t\toffset.y = Number(properties.backgroundverticaloffset);\n// \t}\n// }\n\n// /**\n//  * @param {Vec3} value - screen resolution\n//  */\n// export function resizeScreen(value) {\n// \tisResolutionChanged = true;\n// }\n\n// /**\n//  * @param {Vec3} value - for property 'origin'\n//  * @return {Vec3} - update current property value\n//  */\n// export function init(value) {\n// \torigin = value;\n// \treturn value;\n// }\n\n// /**\n//  * @param {Vec3} value - for property 'origin'\n//  * @return {Vec3} - update current property value\n//  */\n// export function update(value) {\n// \tif (isResolutionChanged) {\n// \t\tisResolutionChanged = false;\n\n// \t\tvalue.x = origin.x + offset.x;\n// \t\tvalue.y = origin.y + offset.y;\n// \t}\n\n// \treturn value;\n// }\n",
-				"value" : "0.00000 0.00000 0.00000"
+				"combos" : 
+				{
+					"version" : 2
+				},
+				"id" : 230,
+				"textures" : [ "util/white" ]
 			},
-			"parent" : 131,
+			"locktransforms" : true,
+			"name" : "shader",
+			"parent" : 158,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet resolution = new Vec2(2560, 1440);\n\n\n// todo: replaceable background\n// export function applyUserProperties(properties) {\n// \tif (properties.hasOwnProperty('backgroundwidth')) {\n// \t\tisResolutionChanged = true;\n\n// \t\twidth = Number(properties.backgroundwidth);\n// \t}\n\n// \tif (properties.hasOwnProperty('backgroundheight')) {\n// \t\tisResolutionChanged = true;\n\n// \t\theight = Number(properties.backgroundheight);\n// \t}\n// }\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleBackground(resolution);\n\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleBackground(thisLayer.size);\n\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
-			"size" : "2560.00000 1440.00000"
+			"size" : "2048.00000 1024.00000",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('background')) {\n\t\tthisLayer.visible = properties.background == thisLayer.name;\n\t}\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
@@ -87,13 +187,13 @@
 			"name" : "left-lines",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tvalue.x = -shared.RESOLUTION_REAL.x * 0.5;\n\t\tvalue.y = shared.RESOLUTION_REAL.y * 0.5;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tif (shared.IS_AUTO_RESOLUTION) {\n\t\t\tvalue.x = -shared.RESOLUTION_REAL_HALF.x;\n\t\t\tvalue.y = shared.RESOLUTION_REAL_HALF.y;\n\t\t}\n\t\telse {\n\t\t\tvalue.x = -shared.RESOLUTION_FIXED_HALF.x;\n\t\t\tvalue.y = shared.RESOLUTION_FIXED_HALF.y;\n\t\t}\n\t}\n\n\treturn value;\n}\n",
 				"value" : "-1280.00000 720.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"visible" : 
@@ -1013,13 +1113,13 @@
 			"name" : "right-lines",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tvalue.x = shared.RESOLUTION_REAL.x * 0.5;\n\t\tvalue.y = -shared.RESOLUTION_REAL.y * 0.5;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tif (shared.IS_AUTO_RESOLUTION) {\n\t\t\tvalue.x = shared.RESOLUTION_REAL_HALF.x;\n\t\t\tvalue.y = -shared.RESOLUTION_REAL_HALF.y;\n\t\t}\n\t\telse {\n\t\t\tvalue.x = shared.RESOLUTION_FIXED_HALF.x;\n\t\t\tvalue.y = -shared.RESOLUTION_FIXED_HALF.y;\n\t\t}\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1280.00000 -720.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "-1.00000 -1.00000 1.00000"
 			},
 			"visible" : 
@@ -1939,13 +2039,13 @@
 			"name" : "title",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\nlet isOffsetChanged = true;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n\tif (properties.hasOwnProperty('titlexoffset')) {\n\t\toffset.x = properties.titlexoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('titleyoffset')) {\n\t\toffset.y = properties.titleyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged || isOffsetChanged) {\n\t\tisResolutionChanged = false;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\nlet isOffsetChanged = true;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n\tif (properties.hasOwnProperty('titlexoffset')) {\n\t\toffset.x = properties.titlexoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('titleyoffset')) {\n\t\toffset.y = properties.titleyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged || isOffsetChanged) {\n\t\tisResolutionChanged = false;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "-820.00000 495.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			}
 		},
@@ -1983,12 +2083,12 @@
 			"parent" : 128,
 			"pointsize" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
 				"value" : 17.0
 			},
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"size" : "247.00000 142.00000",
@@ -2037,12 +2137,12 @@
 			"parent" : 128,
 			"pointsize" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
 				"value" : 17.0
 			},
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"size" : "247.00000 142.00000",
@@ -2065,13 +2165,13 @@
 			"name" : "clock",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\nlet isOffsetChanged = true;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n\tif (properties.hasOwnProperty('clockxoffset')) {\n\t\toffset.x = properties.clockxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('clockyoffset')) {\n\t\toffset.y = properties.clockyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged || isOffsetChanged) {\n\t\tisResolutionChanged = false;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\nlet isOffsetChanged = true;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n\tif (properties.hasOwnProperty('clockxoffset')) {\n\t\toffset.x = properties.clockxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('clockyoffset')) {\n\t\toffset.y = properties.clockyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged || isOffsetChanged) {\n\t\tisResolutionChanged = false;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "-820.00000 0.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"visible" : 
@@ -2175,12 +2275,12 @@
 			"perspective" : true,
 			"pointsize" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
 				"value" : 8.0
 			},
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"size" : "228.00000 67.00000",
@@ -2244,12 +2344,12 @@
 			"parent" : 294,
 			"pointsize" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
 				"value" : 8.0
 			},
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"size" : "534.00000 67.00000",
@@ -2319,13 +2419,13 @@
 			"name" : "audio-visualizer",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\nlet isOffsetChanged = true;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n\tif (properties.hasOwnProperty('audiovisualizerxoffset')) {\n\t\toffset.x = properties.audiovisualizerxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('audiovisualizeryoffset')) {\n\t\toffset.y = properties.audiovisualizeryoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged || isOffsetChanged) {\n\t\tisResolutionChanged = false;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\nlet isOffsetChanged = true;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n\tif (properties.hasOwnProperty('audiovisualizerxoffset')) {\n\t\toffset.x = properties.audiovisualizerxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('audiovisualizeryoffset')) {\n\t\toffset.y = properties.audiovisualizeryoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged || isOffsetChanged) {\n\t\tisResolutionChanged = false;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "787.00000 -31.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "0.35000 0.35000 1.00000"
 			},
 			"size" : "1920.00000 1080.00000",
@@ -2342,13 +2442,13 @@
 			"name" : "media",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\nlet isOffsetChanged = true;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n\tif (properties.hasOwnProperty('mediaxoffset')) {\n\t\toffset.x = properties.mediaxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('mediayoffset')) {\n\t\toffset.y = properties.mediayoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged || isOffsetChanged) {\n\t\tisResolutionChanged = false;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\nlet isOffsetChanged = true;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n\tif (properties.hasOwnProperty('mediaxoffset')) {\n\t\toffset.x = properties.mediaxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('mediayoffset')) {\n\t\toffset.y = properties.mediayoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged || isOffsetChanged) {\n\t\tisResolutionChanged = false;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "820.00000 -495.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"visible" : 
@@ -2393,7 +2493,11 @@
 			"limitwidth" : true,
 			"locktransforms" : true,
 			"maxrows" : 2,
-			"maxwidth" : 630.0,
+			"maxwidth" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet baseWidth = 0;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tbaseWidth = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\t\tvalue = Math.floor(baseWidth * Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y));\n\t}\n\treturn value;\n}\n",
+				"value" : 630.0
+			},
 			"name" : "media-name-shadow",
 			"opaquebackground" : false,
 			"origin" : "373.00000 -4.00000 0.00000",
@@ -2401,12 +2505,12 @@
 			"parent" : 119,
 			"pointsize" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
 				"value" : 10.0
 			},
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"size" : "255.00000 83.00000",
@@ -2435,11 +2539,15 @@
 			"horizontalalign" : "right",
 			"id" : 144,
 			"limitrows" : true,
-			"limituseellipsis" : false,
+			"limituseellipsis" : true,
 			"limitwidth" : true,
 			"locktransforms" : true,
 			"maxrows" : 2,
-			"maxwidth" : 630.0,
+			"maxwidth" : 
+			{
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet baseWidth = 0;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tbaseWidth = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\t\tvalue = Math.floor(baseWidth * Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y));\n\t}\n\treturn value;\n}\n",
+				"value" : 630.0
+			},
 			"name" : "media-name",
 			"opaquebackground" : false,
 			"origin" : "365.00000 4.00000 0.00000",
@@ -2447,12 +2555,12 @@
 			"parent" : 119,
 			"pointsize" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet size = 1;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tsize = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'pointsize'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\treturn shared.getFontSize(size, thisLayer.getParent().scale.x);\n\t}\n\n\treturn value;\n}\n",
 				"value" : 10.0
 			},
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale =  1 / thisLayer.getParent().scale.x;\n\t\tvalue.x = newScale;\n\t\tvalue.y = newScale;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"size" : "255.00000 83.00000",
@@ -2475,13 +2583,13 @@
 			"name" : "art",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\nlet isOffsetChanged = true;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n\tif (properties.hasOwnProperty('artxoffset')) {\n\t\toffset.x = properties.artxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('artyoffset')) {\n\t\toffset.y = properties.artyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged || isOffsetChanged) {\n\t\tisResolutionChanged = false;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\nlet isOffsetChanged = true;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n\tif (properties.hasOwnProperty('artxoffset')) {\n\t\toffset.x = properties.artxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('artyoffset')) {\n\t\toffset.y = properties.artyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged || isOffsetChanged) {\n\t\tisResolutionChanged = false;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "0.00000 0.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			}
 		},
@@ -2663,14 +2771,14 @@
 			"name" : "particles",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet origin = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(origin);\n\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "0.00000 0.00000 0.00000"
 			},
 			"parent" : 493,
 			"particle" : "particles/stars.json",
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet isResolutionChanged = true;\n\nlet scale = new Vec2(1, 1);\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('aspectratio')\n\t\t|| properties.hasOwnProperty('autoresolution')\n\t\t|| properties.hasOwnProperty('resolutionx')\n\t\t|| properties.hasOwnProperty('resolutiony')) {\n\t\tisResolutionChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - screen resolution\n */\nexport function resizeScreen(value) {\n\tisResolutionChanged = true;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = value;\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (isResolutionChanged) {\n\t\tisResolutionChanged = false;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"visible" : 

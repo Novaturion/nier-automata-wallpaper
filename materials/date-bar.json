@@ -10,7 +10,7 @@
 			"cullmode" : "nocull",
 			"depthtest" : "disabled",
 			"depthwrite" : "disabled",
-			"shader" : "genericimage3",
+			"shader" : "genericimage4",
 			"textures" : [ "date-bar" ]
 		}
 	]

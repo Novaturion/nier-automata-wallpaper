@@ -3,15 +3,11 @@
 	[
 		{
 			"alphawriting" : "default",
-			"blending" : "normal",
-			"combos" : 
-			{
-				"VERSION" : 2
-			},
-			"cullmode" : "nocull",
+			"blending" : "translucent",
+			"cullmode" : "normal",
 			"depthtest" : "disabled",
 			"depthwrite" : "disabled",
-			"shader" : "genericimage3",
+			"shader" : "genericimage4",
 			"textures" : [ "background" ]
 		}
 	]
