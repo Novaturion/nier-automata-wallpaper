@@ -2061,6 +2061,7 @@
 			"limitrows" : true,
 			"limituseellipsis" : true,
 			"limitwidth" : true,
+			"locktransforms" : true,
 			"maxrows" : 
 			{
 				"user" : "titlerows",
@@ -2109,6 +2110,7 @@
 			"limitrows" : true,
 			"limituseellipsis" : true,
 			"limitwidth" : true,
+			"locktransforms" : true,
 			"maxrows" : 
 			{
 				"user" : "titlerows",
@@ -2250,6 +2252,7 @@
 			"limitrows" : false,
 			"limituseellipsis" : false,
 			"limitwidth" : true,
+			"locktransforms" : true,
 			"maxrows" : 1,
 			"maxwidth" : 560.0,
 			"name" : "time",
@@ -2314,6 +2317,7 @@
 			"limitrows" : true,
 			"limituseellipsis" : false,
 			"limitwidth" : true,
+			"locktransforms" : true,
 			"maxrows" : 1,
 			"maxwidth" : 559.79053,
 			"name" : "date",
@@ -2467,6 +2471,7 @@
 			"limitrows" : true,
 			"limituseellipsis" : false,
 			"limitwidth" : true,
+			"locktransforms" : true,
 			"maxrows" : 2,
 			"maxwidth" : 
 			{
@@ -2511,6 +2516,7 @@
 			"limitrows" : true,
 			"limituseellipsis" : true,
 			"limitwidth" : true,
+			"locktransforms" : true,
 			"maxrows" : 2,
 			"maxwidth" : 
 			{
@@ -2574,7 +2580,7 @@
 			"solid" : true,
 			"visible" : 
 			{
-				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == thisLayer.name;\n\t}\n}\n\n",
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == thisLayer.name;\n\t}\n}\n",
 				"value" : true
 			}
 		},
@@ -2636,7 +2642,7 @@
 			"solid" : true,
 			"visible" : 
 			{
-				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == thisLayer.name;\n\t}\n}\n\n",
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == thisLayer.name;\n\t}\n}\n",
 				"value" : true
 			}
 		},
@@ -2705,7 +2711,7 @@
 			"size" : "53.00000 46.00000",
 			"visible" : 
 			{
-				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == thisLayer.name;\n\t}\n}\n\n",
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art != \"none\";\n\t}\n}\n",
 				"value" : true
 			}
 		},
