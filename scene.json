@@ -86,13 +86,13 @@
 			"parent" : 158,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\n\n// todo: replaceable background\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleBackground(thisLayer.size);\n\t\tlet maxScale = Math.max(newScale.x, newScale.y);\n\t\tvalue.x = maxScale;\n\t\tvalue.y = maxScale;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\n\n// todo: replaceable background\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleBackground(thisLayer.size);\n\t\tlet maxScale = Math.max(newScale.x, newScale.y);\n\t\tvalue.x = maxScale;\n\t\tvalue.y = maxScale;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"size" : "8192.00000 1440.00000",
 			"visible" : 
 			{
-				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('background')) {\n\t\tthisLayer.visible = properties.background == thisLayer.name;\n\t}\n}\n\n",
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('background')) {\n\t\tthisLayer.visible = properties.background == thisLayer.name;\n\t}\n}\n",
 				"value" : true
 			}
 		},
@@ -138,7 +138,7 @@
 								},
 								"Is Dots Enabled" : 
 								{
-									"script" : "'use strict';\n\nlet isEnabled = 1;\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('dots')) {\n\t\tisEnabled = Number(properties.dots);\n\t}\n}\n\n/**\n * @param {Number} value - for property 'Is Dots Enabled'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\treturn isEnabled;\n}\n\n",
+									"script" : "'use strict';\n\nlet isEnabled = 1;\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('dots')) {\n\t\tisEnabled = Number(properties.dots);\n\t}\n}\n\n/**\n * @param {Number} value - for property 'Is Dots Enabled'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\treturn isEnabled;\n}\n",
 									"value" : 1
 								}
 							},
@@ -165,13 +165,13 @@
 			"parent" : 158,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleBackground(thisLayer.size);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleBackground(thisLayer.size);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"size" : "2048.00000 1024.00000",
 			"visible" : 
 			{
-				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('background')) {\n\t\tthisLayer.visible = properties.background == thisLayer.name;\n\t}\n}\n\n",
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('background')) {\n\t\tthisLayer.visible = properties.background == thisLayer.name;\n\t}\n}\n",
 				"value" : true
 			}
 		},
@@ -189,7 +189,7 @@
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"solid" : true,
@@ -1111,13 +1111,13 @@
 			"name" : "right-lines",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tif (shared.IS_AUTO_RESOLUTION) {\n\t\t\tvalue.x = shared.RESOLUTION_REAL_HALF.x;\n\t\t\tvalue.y = -shared.RESOLUTION_REAL_HALF.y;\n\t\t}\n\t\telse {\n\t\t\tvalue.x = shared.RESOLUTION_FIXED_HALF.x;\n\t\t\tvalue.y = -shared.RESOLUTION_FIXED_HALF.y;\n\t\t}\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tif (shared.IS_AUTO_RESOLUTION) {\n\t\t\tvalue.x = shared.RESOLUTION_REAL_HALF.x;\n\t\t\tvalue.y = -shared.RESOLUTION_REAL_HALF.y;\n\t\t}\n\t\telse {\n\t\t\tvalue.x = shared.RESOLUTION_FIXED_HALF.x;\n\t\t\tvalue.y = -shared.RESOLUTION_FIXED_HALF.y;\n\t\t}\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1280.00000 -720.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "-1.00000 -1.00000 1.00000"
 			},
 			"solid" : true,
@@ -2039,13 +2039,13 @@
 			"name" : "title",
 			"origin" : 
 			{
-				"script" : "'use strict';\nlet isOffsetChanged = true;\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('titlexoffset')) {\n\t\toffset.x = properties.titlexoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('titleyoffset')) {\n\t\toffset.y = properties.titleyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION || isOffsetChanged) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\nlet isOffsetChanged = true;\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('titlexoffset')) {\n\t\toffset.x = properties.titlexoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('titleyoffset')) {\n\t\toffset.y = properties.titleyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION || isOffsetChanged) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "-820.00000 495.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"solid" : true
@@ -2157,13 +2157,13 @@
 			"name" : "clock",
 			"origin" : 
 			{
-				"script" : "'use strict';\nlet isOffsetChanged = true;\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('clockxoffset')) {\n\t\toffset.x = properties.clockxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('clockyoffset')) {\n\t\toffset.y = properties.clockyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION || isOffsetChanged) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\nlet isOffsetChanged = true;\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('clockxoffset')) {\n\t\toffset.x = properties.clockxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('clockyoffset')) {\n\t\toffset.y = properties.clockyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION || isOffsetChanged) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "-820.00000 0.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"solid" : true,
@@ -2208,7 +2208,7 @@
 		{
 			"alpha" : 
 			{
-				"script" : "'use strict';\n\nlet isBlinkingEnabled = true;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('timebarblinking')) {\n\t\tisBlinkingEnabled = Boolean(properties.timebarblinking);\n\t}\n}\n\n/**\n * @param {Number} value - for property 'alpha'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (!isBlinkingEnabled) {\n\t\treturn value;\n\t}\n\n\tlet delta = Math.sin(engine.runtime * 4) * 0.3 + 1.05;\n\n\treturn shared.clamp(delta, 0.8, 1);\n}\n\n",
+				"script" : "'use strict';\n\nlet isBlinkingEnabled = true;\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('timebarblinking')) {\n\t\tisBlinkingEnabled = Boolean(properties.timebarblinking);\n\t}\n}\n\n/**\n * @param {Number} value - for property 'alpha'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (!isBlinkingEnabled) {\n\t\treturn value;\n\t}\n\n\tlet delta = Math.sin(engine.runtime * 4) * 0.3 + 1.05;\n\n\treturn shared.clamp(delta, 0.8, 1);\n}\n",
 				"value" : 1.0
 			},
 			"angles" : "0.00000 -0.00000 0.00000",
@@ -2402,13 +2402,13 @@
 			"name" : "audio-visualizer",
 			"origin" : 
 			{
-				"script" : "'use strict';\nlet isOffsetChanged = true;\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('audiovisualizerxoffset')) {\n\t\toffset.x = properties.audiovisualizerxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('audiovisualizeryoffset')) {\n\t\toffset.y = properties.audiovisualizeryoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION || isOffsetChanged) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\nlet isOffsetChanged = true;\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('audiovisualizerxoffset')) {\n\t\toffset.x = properties.audiovisualizerxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('audiovisualizeryoffset')) {\n\t\toffset.y = properties.audiovisualizeryoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION || isOffsetChanged) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "787.00000 -31.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "0.35000 0.35000 1.00000"
 			},
 			"size" : "1920.00000 1080.00000",
@@ -2426,13 +2426,13 @@
 			"name" : "media",
 			"origin" : 
 			{
-				"script" : "'use strict';\nlet isOffsetChanged = true;\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('mediaxoffset')) {\n\t\toffset.x = properties.mediaxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('mediayoffset')) {\n\t\toffset.y = properties.mediayoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION || isOffsetChanged) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\nlet isOffsetChanged = true;\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('mediaxoffset')) {\n\t\toffset.x = properties.mediaxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('mediayoffset')) {\n\t\toffset.y = properties.mediayoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION || isOffsetChanged) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "820.00000 -495.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"solid" : true,
@@ -2456,7 +2456,7 @@
 			"size" : "512.00000 512.00000",
 			"visible" : 
 			{
-				"script" : "'use strict';\n\nlet isVisible = true;\nlet mediaTitle = \"\";\n\n\nfunction updateVisibility() {\n\tthisLayer.visible = isVisible && mediaTitle != \"\";\n}\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('mediacover')) {\n\t\tisVisible = properties.mediacover;\n\t\tupdateVisibility();\n\t}\n}\n\n\nexport function mediaPropertiesChanged(event) {\n\tmediaTitle = event.title;\n\tupdateVisibility();\n}\n\n/**\n * @param {Number} value - for property 'visible'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\treturn false;\n}\n\n",
+				"script" : "'use strict';\n\nlet isVisible = true;\nlet mediaTitle = \"\";\n\n\nfunction updateVisibility() {\n\tthisLayer.visible = isVisible && mediaTitle != \"\";\n}\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('mediacover')) {\n\t\tisVisible = properties.mediacover;\n\t\tupdateVisibility();\n\t}\n}\n\n\nexport function mediaPropertiesChanged(event) {\n\tmediaTitle = event.title;\n\tupdateVisibility();\n}\n\n/**\n * @param {Number} value - for property 'visible'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\treturn false;\n}\n",
 				"value" : true
 			}
 		},
@@ -2475,7 +2475,7 @@
 			"maxrows" : 2,
 			"maxwidth" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet baseWidth = 0;\n\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tbaseWidth = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tvalue = Math.floor(baseWidth * Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y));\n\t}\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet baseWidth = 0;\n\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tbaseWidth = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tvalue = Math.floor(baseWidth * Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y));\n\t}\n\treturn value;\n}\n",
 				"value" : 630.0
 			},
 			"name" : "media-name-shadow",
@@ -2496,7 +2496,7 @@
 			"spacing" : "0.00000 0.00000",
 			"text" : 
 			{
-				"script" : "'use strict';\n\n\nexport function mediaPropertiesChanged(event) {\n\tthisLayer.text = event.title;\n}\n\n/**\n * @param {String} value - for property 'text'\n * @return {String} - update current property value\n */\nexport function init(value) {\n\treturn \"\";\n}\n\n",
+				"script" : "'use strict';\n\n\nexport function mediaPropertiesChanged(event) {\n\tthisLayer.text = event.title;\n}\n\n/**\n * @param {String} value - for property 'text'\n * @return {String} - update current property value\n */\nexport function init(value) {\n\treturn \"\";\n}\n",
 				"value" : "Media Name"
 			},
 			"verticalalign" : "bottom",
@@ -2520,7 +2520,7 @@
 			"maxrows" : 2,
 			"maxwidth" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet baseWidth = 0;\n\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tbaseWidth = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tvalue = Math.floor(baseWidth * Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y));\n\t}\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet baseWidth = 0;\n\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function init(value) {\n\tbaseWidth = value;\n\treturn value;\n}\n\n/**\n * @param {Number} value - for property 'maxwidth'\n * @return {Number} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\nresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tvalue = Math.floor(baseWidth * Math.min(shared.SCALE_FACTOR.x, shared.SCALE_FACTOR.y));\n\t}\n\treturn value;\n}\n",
 				"value" : 630.0
 			},
 			"name" : "media-name",
@@ -2541,7 +2541,7 @@
 			"spacing" : "0.00000 0.00000",
 			"text" : 
 			{
-				"script" : "'use strict';\n\n\nexport function mediaPropertiesChanged(event) {\n\tthisLayer.text = event.title;\n}\n\n/**\n * @param {String} value - for property 'text'\n * @return {String} - update current property value\n */\nexport function init(value) {\n\treturn \"\";\n}\n\n",
+				"script" : "'use strict';\n\n\nexport function mediaPropertiesChanged(event) {\n\tthisLayer.text = event.title;\n}\n\n/**\n * @param {String} value - for property 'text'\n * @return {String} - update current property value\n */\nexport function init(value) {\n\treturn \"\";\n}\n",
 				"value" : "Media Name"
 			},
 			"verticalalign" : "bottom",
@@ -2559,13 +2559,13 @@
 			"name" : "art",
 			"origin" : 
 			{
-				"script" : "'use strict';\nlet isOffsetChanged = true;\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('artxoffset')) {\n\t\toffset.x = properties.artxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('artyoffset')) {\n\t\toffset.y = properties.artyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION || isOffsetChanged) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\nlet isOffsetChanged = true;\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\nlet offset = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('artxoffset')) {\n\t\toffset.x = properties.artxoffset;\n\t\tisOffsetChanged = true;\n\t}\n\tif (properties.hasOwnProperty('artyoffset')) {\n\t\toffset.y = properties.artyoffset;\n\t\tisOffsetChanged = true;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION || isOffsetChanged) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\t\tisOffsetChanged = false;\n\n\t\tlet newOrigin = shared.getPosition(new Vec2(origin.x + offset.x, origin.y + offset.y));\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "0.00000 0.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"solid" : true
@@ -2593,7 +2593,7 @@
 			"name" : "art-center",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (\n\t\tMath.sin(engine.runtime * animation.x) * animation.y\n\t);\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (\n\t\tMath.sin(engine.runtime * animation.x) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "-15.50012 -20.00006 0.00000"
 			},
 			"parent" : 147,
@@ -2609,7 +2609,7 @@
 			"name" : "art-top",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 2) * animation.y\n\t);\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 2) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "14.49988 170.99994 0.00000"
 			},
 			"parent" : 147,
@@ -2625,7 +2625,7 @@
 			"name" : "art-bottom",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 4) * animation.y\n\t);\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 4) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "-47.00006 -212.00006 0.00000"
 			},
 			"parent" : 147,
@@ -2655,7 +2655,7 @@
 			"name" : "art-center-no-characers",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (\n\t\tMath.sin(engine.runtime * animation.x) * animation.y\n\t);\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (\n\t\tMath.sin(engine.runtime * animation.x) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "-15.50012 -20.00006 0.00000"
 			},
 			"parent" : 148,
@@ -2671,7 +2671,7 @@
 			"name" : "art-top-no-characers",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 2) * animation.y\n\t);\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 2) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "14.49988 170.99994 0.00000"
 			},
 			"parent" : 148,
@@ -2687,7 +2687,7 @@
 			"name" : "art-bottom-no-characers",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 4) * animation.y\n\t);\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec3();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n\tif (properties.hasOwnProperty('animationshift')) {\n\t\tanimation.z = properties.animationshift;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y + (\n\t\tMath.sin(engine.runtime * animation.x + animation.z * 4) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "-47.00006 -212.00006 0.00000"
 			},
 			"parent" : 148,
@@ -2703,7 +2703,7 @@
 			"name" : "art-bottom-cube",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (\n\t\tMath.sin(engine.runtime * animation.x) * animation.y\n\t);\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet origin = new Vec2();\nlet animation = new Vec2();\n\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('animationspeed')) {\n\t\tanimation.x = properties.animationspeed;\n\t}\n\tif (properties.hasOwnProperty('animationamplitude')) {\n\t\tanimation.y = properties.animationamplitude;\n\t}\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n    origin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tvalue.y = origin.y - (\n\t\tMath.sin(engine.runtime * animation.x) * animation.y\n\t);\n\treturn value;\n}\n",
 				"value" : "174.00000 -355.00000 0.00000"
 			},
 			"parent" : 493,
@@ -2752,7 +2752,7 @@
 			"name" : "particles",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newOrigin = shared.getPosition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet origin = new Vec2();\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\torigin = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newOrigin = shared.getPosition(origin);\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "0.00000 0.00000 0.00000"
 			},
 			"parent" : 493,
