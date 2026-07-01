@@ -183,13 +183,13 @@
 			"name" : "left-lines",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tif (shared.IS_AUTO_RESOLUTION) {\n\t\t\tvalue.x = -shared.RESOLUTION_REAL_HALF.x;\n\t\t\tvalue.y = shared.RESOLUTION_REAL_HALF.y;\n\t\t}\n\t\telse {\n\t\t\tvalue.x = -shared.RESOLUTION_FIXED_HALF.x;\n\t\t\tvalue.y = shared.RESOLUTION_FIXED_HALF.y;\n\t\t}\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newOrigin = shared.getPositionTopLeft();\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "-1280.00000 720.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec3(1, 1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1.00000 1.00000 1.00000"
 			},
 			"solid" : true,
@@ -543,7 +543,6 @@
 			"size" : "818.00000 818.00000"
 		},
 		{
-			"alignment" : "top",
 			"alpha" : 0.15000001,
 			"angles" : "0.00000 0.00000 0.78540",
 			"disablepropagation" : false,
@@ -735,14 +734,13 @@
 					},
 					"relative" : true
 				},
-				"value" : "80.00000 24.00000 0.00000"
+				"value" : "663.00000 -559.00000 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.00000 1.61000 1.00000",
 			"size" : "4.00000 1024.00000"
 		},
 		{
-			"alignment" : "top",
 			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"disablepropagation" : false,
@@ -916,14 +914,13 @@
 					},
 					"relative" : true
 				},
-				"value" : "-24.00000 24.00000 0.00000"
+				"value" : "693.00000 -693.00000 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.00000 1.98000 1.00000",
 			"size" : "4.00000 1024.00000"
 		},
 		{
-			"alignment" : "top",
 			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"disablepropagation" : false,
@@ -1097,7 +1094,7 @@
 					},
 					"relative" : true
 				},
-				"value" : "-24.00000 -80.00000 0.00000"
+				"value" : "613.00000 -717.00000 0.00000"
 			},
 			"parent" : 431,
 			"scale" : "1.00000 1.76000 1.00000",
@@ -1111,13 +1108,13 @@
 			"name" : "right-lines",
 			"origin" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tif (shared.IS_AUTO_RESOLUTION) {\n\t\t\tvalue.x = shared.RESOLUTION_REAL_HALF.x;\n\t\t\tvalue.y = -shared.RESOLUTION_REAL_HALF.y;\n\t\t}\n\t\telse {\n\t\t\tvalue.x = shared.RESOLUTION_FIXED_HALF.x;\n\t\t\tvalue.y = -shared.RESOLUTION_FIXED_HALF.y;\n\t\t}\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\n\n/**\n * @param {Vec3} value - for property 'origin'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newOrigin = shared.getPositionBottomRight();\n\t\tvalue.x = newOrigin.x;\n\t\tvalue.y = newOrigin.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "1280.00000 -720.00000 0.00000"
 			},
 			"parent" : 131,
 			"scale" : 
 			{
-				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec2(1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
+				"script" : "'use strict';\n\nlet resolutionVersion = -1;\n\nlet scale = new Vec3(1, 1, 1);\n\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function init(value) {\n\tscale = shared.copyVec3(value);\n\treturn value;\n}\n\n/**\n * @param {Vec3} value - for property 'scale'\n * @return {Vec3} - update current property value\n */\nexport function update(value) {\n\tif (resolutionVersion !== shared.RESOLUTION_VERSION) {\n\t\tresolutionVersion = shared.RESOLUTION_VERSION;\n\n\t\tlet newScale = shared.getScaleMin(scale);\n\t\tvalue.x = newScale.x;\n\t\tvalue.y = newScale.y;\n\t}\n\n\treturn value;\n}\n",
 				"value" : "-1.00000 -1.00000 1.00000"
 			},
 			"solid" : true,
@@ -1471,7 +1468,6 @@
 			"size" : "818.00000 818.00000"
 		},
 		{
-			"alignment" : "top",
 			"alpha" : 0.15000001,
 			"angles" : "0.00000 0.00000 0.78540",
 			"disablepropagation" : false,
@@ -1663,14 +1659,13 @@
 					},
 					"relative" : true
 				},
-				"value" : "80.00000 24.00000 0.00000"
+				"value" : "663.00000 -559.00000 0.00000"
 			},
 			"parent" : 193,
 			"scale" : "1.00000 1.61000 1.00000",
 			"size" : "4.00000 1024.00000"
 		},
 		{
-			"alignment" : "top",
 			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"disablepropagation" : false,
@@ -1844,14 +1839,13 @@
 					},
 					"relative" : true
 				},
-				"value" : "-24.00000 24.00000 0.00000"
+				"value" : "693.00000 -693.00000 0.00000"
 			},
 			"parent" : 193,
 			"scale" : "1.00000 1.98000 1.00000",
 			"size" : "4.00000 1024.00000"
 		},
 		{
-			"alignment" : "top",
 			"alpha" : 0.15000001,
 			"angles" : "0.00000 -0.00000 0.78540",
 			"disablepropagation" : false,
@@ -2025,7 +2019,7 @@
 					},
 					"relative" : true
 				},
-				"value" : "-24.00000 -80.00000 0.00000"
+				"value" : "613.00000 -717.00000 0.00000"
 			},
 			"parent" : 193,
 			"scale" : "1.00000 1.76000 1.00000",
@@ -2555,7 +2549,6 @@
 			"angles" : "0.00000 -0.00000 0.00000",
 			"disablepropagation" : false,
 			"id" : 493,
-			"locktransforms" : true,
 			"name" : "art",
 			"origin" : 
 			{
@@ -2598,7 +2591,12 @@
 			},
 			"parent" : 147,
 			"scale" : "0.90000 0.90000 1.00000",
-			"size" : "701.00000 510.00000"
+			"size" : "701.00000 510.00000",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == 'default';\n\t}\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
@@ -2614,7 +2612,12 @@
 			},
 			"parent" : 147,
 			"scale" : "0.90000 0.90000 1.00000",
-			"size" : "803.00000 950.00000"
+			"size" : "803.00000 950.00000",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == 'default';\n\t}\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
@@ -2630,7 +2633,12 @@
 			},
 			"parent" : 147,
 			"scale" : "0.90000 0.90000 1.00000",
-			"size" : "730.00000 847.00000"
+			"size" : "730.00000 847.00000",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == 'default';\n\t}\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
@@ -2660,7 +2668,12 @@
 			},
 			"parent" : 148,
 			"scale" : "0.90000 0.90000 1.00000",
-			"size" : "701.00000 510.00000"
+			"size" : "701.00000 510.00000",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == 'no-characters';\n\t}\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
@@ -2676,7 +2689,12 @@
 			},
 			"parent" : 148,
 			"scale" : "0.90000 0.90000 1.00000",
-			"size" : "803.00000 950.00000"
+			"size" : "803.00000 950.00000",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == 'no-characters';\n\t}\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
@@ -2692,7 +2710,12 @@
 			},
 			"parent" : 148,
 			"scale" : "0.90000 0.90000 1.00000",
-			"size" : "730.00000 847.00000"
+			"size" : "730.00000 847.00000",
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art == 'no-characters';\n\t}\n}\n",
+				"value" : true
+			}
 		},
 		{
 			"angles" : "0.00000 -0.00000 0.00000",
@@ -2711,7 +2734,7 @@
 			"size" : "53.00000 46.00000",
 			"visible" : 
 			{
-				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art != \"none\";\n\t}\n}\n",
+				"script" : "'use strict';\n\nexport function applyUserProperties(properties) {\n\tif (properties.hasOwnProperty('art')) {\n\t\tthisLayer.visible = properties.art != 'none';\n\t}\n}\n",
 				"value" : true
 			}
 		},
