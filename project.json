@@ -813,7 +813,7 @@
 	"ratingviolence" : "none",
 	"tags" : [ "Game" ],
 	"title" : "NieR: Automata | Android Machine Robot | eggloaf",
-	"type" : "Scene",
+	"type" : "scene",
 	"version" : 17,
 	"visibility" : "public",
 	"workshopid" : "3002120692",

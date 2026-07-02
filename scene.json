@@ -179,6 +179,7 @@
 			"angles" : "0.00000 -0.00000 0.00000",
 			"disablepropagation" : false,
 			"id" : 431,
+			"locktransforms" : true,
 			"name" : "left-lines",
 			"origin" : 
 			{
@@ -1103,6 +1104,7 @@
 			"angles" : "0.00000 -0.00000 0.00000",
 			"disablepropagation" : false,
 			"id" : 193,
+			"locktransforms" : true,
 			"name" : "right-lines",
 			"origin" : 
 			{
