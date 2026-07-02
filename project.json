@@ -27,7 +27,7 @@
 			},
 			"animationamplitude" : 
 			{
-				"condition" : "art.value != \"none\"",
+				"condition" : "art.value != 'none'",
 				"fraction" : true,
 				"index" : 37,
 				"max" : 50,
@@ -41,7 +41,7 @@
 			},
 			"animationshift" : 
 			{
-				"condition" : "art.value != \"none\"",
+				"condition" : "art.value != 'none'",
 				"fraction" : true,
 				"index" : 38,
 				"max" : 3.14,
@@ -55,7 +55,7 @@
 			},
 			"animationspeed" : 
 			{
-				"condition" : "art.value != \"none\"",
+				"condition" : "art.value != 'none'",
 				"fraction" : true,
 				"index" : 36,
 				"max" : 10,
@@ -100,7 +100,7 @@
 			},
 			"artxoffset" : 
 			{
-				"condition" : "art.value != \"none\"",
+				"condition" : "art.value != 'none'",
 				"fraction" : false,
 				"index" : 34,
 				"max" : 5000,
@@ -112,7 +112,7 @@
 			},
 			"artyoffset" : 
 			{
-				"condition" : "art.value != \"none\"",
+				"condition" : "art.value != 'none'",
 				"fraction" : false,
 				"index" : 35,
 				"max" : 3000,
@@ -276,7 +276,7 @@
 			},
 			"backgroundcolor" : 
 			{
-				"condition" : "background.value == \"shader\"",
+				"condition" : "background.value == 'shader'",
 				"index" : 48,
 				"order" : 148,
 				"text" : "Background Color",
@@ -383,7 +383,7 @@
 			},
 			"dots" : 
 			{
-				"condition" : "background.value == \"shader\"",
+				"condition" : "background.value == 'shader'",
 				"index" : 49,
 				"order" : 149,
 				"text" : "Dots",
@@ -392,7 +392,7 @@
 			},
 			"dotsbluramount" : 
 			{
-				"condition" : "background.value == \"shader\" && dots.value",
+				"condition" : "background.value == 'shader' && dots.value",
 				"fraction" : true,
 				"index" : 53,
 				"max" : 50,
@@ -406,7 +406,7 @@
 			},
 			"dotscolor" : 
 			{
-				"condition" : "background.value == \"shader\" && dots.value",
+				"condition" : "background.value == 'shader' && dots.value",
 				"index" : 50,
 				"order" : 150,
 				"text" : "Dots Color",
@@ -415,7 +415,7 @@
 			},
 			"dotsradius" : 
 			{
-				"condition" : "background.value == \"shader\" && dots.value",
+				"condition" : "background.value == 'shader' && dots.value",
 				"fraction" : true,
 				"index" : 51,
 				"max" : 10,
@@ -429,7 +429,7 @@
 			},
 			"dotsspacing" : 
 			{
-				"condition" : "background.value == \"shader\" && dots.value",
+				"condition" : "background.value == 'shader' && dots.value",
 				"fraction" : true,
 				"index" : 52,
 				"max" : 5,
@@ -813,7 +813,7 @@
 	"ratingviolence" : "none",
 	"tags" : [ "Game" ],
 	"title" : "NieR: Automata | Android Machine Robot | eggloaf",
-	"type" : "scene",
+	"type" : "Scene",
 	"version" : 17,
 	"visibility" : "public",
 	"workshopid" : "3002120692",
